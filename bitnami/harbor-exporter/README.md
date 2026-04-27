@@ -1,66 +1,100 @@
-# harbor-exporter packaged by Bitnami
+# Bitnami Secure Image for Harbor Exporter
 
-## What is harbor-exporter?
+> Harbor Exporter is one of the components of Harbor: a cloud-native registry that stores, signs, and scans content. This component expose Harbor metrics in Prometheus format.
 
-> The exporter component metrics collects some data from the Harbor database.
-
-[Overview of harbor-exporter](https://github.com/goharbor/harbor)
+[Overview of Harbor Exporter](https://goharbor.io/)
+Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
 
-This container is part of the [Harbor solution](https://github.com/bitnami/charts/tree/main/bitnami/harbor) that is primarily intended to be deployed in Kubernetes. You can deploy Harbor solution and then enable this specific container with the command below:
+This container is part of the [Harbor solution](https://github.com/bitnami/charts/tree/main/bitnami/harbor) that is primarily intended to be deployed in Kubernetes.
 
 ```console
-curl -LO https://raw.githubusercontent.com/bitnami/containers/main/bitnami/harbor-portal/docker-compose.yml
-curl -L https://github.com/bitnami/containers/archive/main.tar.gz | tar xz --strip=2 containers-main/bitnami/harbor-portal && cp -RL harbor-portal/config . && rm -rf harbor-portal
-docker-compose up
+docker run --name harbor-exporter bitnami/harbor-exporter:latest
 ```
 
-## Why use Bitnami Images?
+## Why use Bitnami Secure Images?
 
-* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With Bitnami images the latest bug fixes and features are available as soon as possible.
-* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
-* All our images are based on minideb a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
-* Bitnami container images are released on a regular basis with the latest distribution packages available.
+Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami Secure Images are based on the cloud-optimized, security-hardened enterprise [OS Photon Linux](https://vmware.github.io/photon/). Why choose BSI images?
 
-Looking to use harbor-exporter in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
+- Hardened secure images of popular open source software with Near-Zero Vulnerabilities
+- Vulnerability Triage & Prioritization with VEX Statements, KEV and EPSS Scores
+- Compliance focus with FIPS, STIG, and air-gap options, including secure bill of materials (SBOM)
+- Software supply chain provenance attestation through in-toto
+- First class support for the internet’s favorite Helm charts
+
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
+
+If you are looking for our previous generation of images based on Debian Linux, please see the [Bitnami Legacy registry](https://hub.docker.com/u/bitnamilegacy).
 
 ## How to deploy Harbor in Kubernetes?
 
 Deploying Bitnami applications as Helm Charts is the easiest way to get started with our applications on Kubernetes. Read more about the installation in the [Bitnami Harbor Chart GitHub repository](https://github.com/bitnami/charts/tree/master/bitnami/harbor).
 
-Bitnami containers can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
-
 ## Why use a non-root container?
 
-Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://docs.bitnami.com/tutorials/work-with-non-root-containers/).
+Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-work-with-non-root-containers-index.html).
 
 ## Supported tags and respective `Dockerfile` links
 
-Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
-
-You can see the equivalence between the different tags by taking a look at the `tags-info.yaml` file present in the branch folder, i.e `bitnami/ASSET/BRANCH/DISTRO/tags-info.yaml`.
-
-Subscribe to project updates by watching the [bitnami/containers GitHub repo](https://github.com/bitnami/containers).
+Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html).
 
 ## Configuration
 
-harbor-exporter is a component of the Harbor application. In order to get the Harbor application running on Kubernetes we encourage you to check the [bitnami/harbor Helm chart](https://github.com/bitnami/charts/tree/master/bitnami/harbor) and configure it using the options exposed in the values.yaml file.
+Harbor Exporter is a component of the Harbor application. In order to get the Harbor application running on Kubernetes we encourage you to check the [bitnami/harbor Helm chart](https://github.com/bitnami/charts/tree/master/bitnami/harbor) and configure it using the options exposed in the values.yaml file.
 
-For further information about the specific component itself, please refer to the [source repository documentation](https://github.com/goharbor/harbor/tree/main/docs
+For further information about the specific component itself, please refer to the [source repository documentation](https://goharbor.io//tree/main/docs
 
-## Contributing
+### Environment variables
 
-We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues) or submitting a [pull request](https://github.com/bitnami/containers/pulls) with your contribution.
+The following tables list the main variables you can set.
 
-## Issues
+#### Customizable environment variables
 
-If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/containers/issues/new/choose). For us to provide better support, be sure to fill the issue template.
+| Name                           | Description                                                                                 | Default Value                         |
+|--------------------------------|---------------------------------------------------------------------------------------------|---------------------------------------|
+| `HARBOR_EXPORTER_BASE_DIR`     | harbor-exporter installation directory.                                                     | `${BITNAMI_ROOT_DIR}/harbor-exporter` |
+| `HARBOR_DATABASE_HOST`         | The hostname of external database                                                           | `nil`                                 |
+| `HARBOR_DATABASE_PORT`         | The port of external database                                                               | `5432`                                |
+| `HARBOR_DATABASE_USERNAME`     | The username of external database                                                           | `nil`                                 |
+| `HARBOR_DATABASE_PASSWORD`     | The password of external database                                                           | `nil`                                 |
+| `HARBOR_DATABASE_DBNAME`       | The database used by core service                                                           | `nil`                                 |
+| `HARBOR_DATABASE_SSLMODE`      | Database certificate verification: require, verify-full, verify-ca, disable (default value) | `disable`                             |
+| `HARBOR_SERVICE_SCHEME`        | Core service scheme (http or https)                                                         | `http`                                |
+| `HARBOR_SERVICE_HOST`          | Core service hostname                                                                       | `core`                                |
+| `HARBOR_SERVICE_PORT`          | Core service port                                                                           | `8080`                                |
+| `HARBOR_REDIS_URL`             | Redis URL for job service (scheme://[redis:password@]addr/db_index)                         | `nil`                                 |
+| `HARBOR_REDIS_NAMESPACE`       | Redis namespace for jobservice. Default `harbor_job_service_namespace                       | `harbor_job_service_namespace`        |
+| `HARBOR_REDIS_TIMEOUT`         | Redis connection timeout.                                                                   | `3600`                                |
+| `HARBOR_EXPORTER_PORT`         | Port for exporter metrics                                                                   | `9090`                                |
+| `HARBOR_EXPORTER_METRICS_PATH` | URL path for exporter metrics.                                                              | `/metrics`                            |
+
+#### Read-only environment variables
+
+| Name                           | Description                   | Value    |
+|--------------------------------|-------------------------------|----------|
+| `HARBOR_EXPORTER_DAEMON_USER`  | harbor-exporter system user.  | `harbor` |
+| `HARBOR_EXPORTER_DAEMON_GROUP` | harbor-exporter system group. | `harbor` |
+
+## Notable Changes
+
+### Starting January 16, 2024
+
+- The `docker-compose.yaml` file has been removed, as it was solely intended for internal testing purposes.
+
+### FIPS configuration in Bitnami Secure Images
+
+The Bitnami Harbor Exporter Docker image from the [Bitnami Secure Images](https://go-vmware.broadcom.com/contact-us) catalog includes extra features and settings to configure the container with FIPS capabilities. You can configure the next environment variables:
+
+- `OPENSSL_FIPS`: whether OpenSSL runs in FIPS mode or not. `yes` (default), `no`.
+- `GODEBUG`: controls Go FIPS mode. Use `fips140=only` (restricted), `fips140=on` (relaxed), or `fips140=off` (disabled).
 
 ## License
 
-Copyright &copy; 2023 VMware, Inc.
+Copyright &copy; 2026 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

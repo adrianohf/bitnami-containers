@@ -1,11 +1,9 @@
 # Bitnami Object Storage Client based on MinIO&reg;
 
-## What is Bitnami Object Storage Client based on MinIO&reg;?
-
 > MinIO&reg; Client is a Golang CLI tool that offers alternatives for ls, cp, mkdir, diff, and rsync commands for filesystems and object storage systems.
 
 [Overview of Bitnami Object Storage Client based on MinIO&reg;](https://min.io/)
-Disclaimer: All software products, projects and company names are trademark(TM) or registered(R) trademarks of their respective holders, and use of them does not imply any affiliation or endorsement. This software is licensed to you subject to one or more open source licenses and VMware provides the software on an AS-IS basis. MinIO(R) is a registered trademark of the MinIO, Inc in the US and other countries. Bitnami is not affiliated, associated, authorized, endorsed by, or in any way officially connected with MinIO Inc. MinIO(R) is licensed under GNU AGPL v3.0.
+All software products, projects and company names are trademark(TM) or registered(R) trademarks of their respective holders, and use of them does not imply any affiliation or endorsement. This software is licensed to you subject to one or more open source licenses and VMware provides the software on an AS-IS basis. MinIO(R) is a registered trademark of the MinIO, Inc in the US and other countries. Bitnami is not affiliated, associated, authorized, endorsed by, or in any way officially connected with MinIO Inc. MinIO(R) is licensed under GNU AGPL v3.0.
 
 ## TL;DR
 
@@ -13,57 +11,56 @@ Disclaimer: All software products, projects and company names are trademark(TM) 
 docker run --name minio-client bitnami/minio-client:latest
 ```
 
-### Docker Compose
+## Why use Bitnami Secure Images?
 
-```console
-curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/minio-client/docker-compose.yml > docker-compose.yml
-docker-compose up -d
-```
+Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami Secure Images are based on the cloud-optimized, security-hardened enterprise [OS Photon Linux](https://vmware.github.io/photon/). Why choose BSI images?
 
-## Why use Bitnami Images?
+- Hardened secure images of popular open source software with Near-Zero Vulnerabilities
+- Vulnerability Triage & Prioritization with VEX Statements, KEV and EPSS Scores
+- Compliance focus with FIPS, STIG, and air-gap options, including secure bill of materials (SBOM)
+- Software supply chain provenance attestation through in-toto
+- First class support for the internet’s favorite Helm charts
 
-* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With Bitnami images the latest bug fixes and features are available as soon as possible.
-* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
-* All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
-* All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
-* Bitnami container images are released on a regular basis with the latest distribution packages available.
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
 
-Looking to use Bitnami Object Storage Client based on MinIO&reg; in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
+
+If you are looking for our previous generation of images based on Debian Linux, please see the [Bitnami Legacy registry](https://hub.docker.com/u/bitnamilegacy).
 
 ## Why use a non-root container?
 
-Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://docs.bitnami.com/tutorials/work-with-non-root-containers/).
+Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-work-with-non-root-containers-index.html).
 
 ## Supported tags and respective `Dockerfile` links
 
-Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
-
-You can see the equivalence between the different tags by taking a look at the `tags-info.yaml` file present in the branch folder, i.e `bitnami/ASSET/BRANCH/DISTRO/tags-info.yaml`.
-
-Subscribe to project updates by watching the [bitnami/containers GitHub repo](https://github.com/bitnami/containers).
+Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html).
 
 ## Get this image
 
-The recommended way to get the Bitnami MinIO(R) Client Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/minio-client).
+The Bitnami Bitnami Object Storage Client based on MinIO&reg; Docker image is only available to [Bitnami Secure Images](https://bitnami.com) customers.
 
-```console
-docker pull bitnami/minio-client:latest
-```
+## Environment variables
 
-To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/bitnami/minio-client/tags/) in the Docker Hub Registry.
+### Customizable environment variables
 
-```console
-docker pull bitnami/minio-client:[TAG]
-```
+| Name                         | Description                                     | Default Value |
+|------------------------------|-------------------------------------------------|---------------|
+| `MINIO_CLIENT_CONF_DIR`      | MinIO Client directory for configuration files. | `/.mc`        |
+| `MINIO_SERVER_HOST`          | MinIO Server host.                              | `nil`         |
+| `MINIO_SERVER_PORT_NUMBER`   | MinIO Server port number.                       | `9000`        |
+| `MINIO_SERVER_SCHEME`        | MinIO Server web scheme.                        | `http`        |
+| `MINIO_SERVER_ROOT_USER`     | MinIO Server root user name.                    | `nil`         |
+| `MINIO_SERVER_ROOT_PASSWORD` | Password for MinIO Server root user.            | `nil`         |
 
-If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
+### Read-only environment variables
 
-```console
-git clone https://github.com/bitnami/containers.git
-cd bitnami/APP/VERSION/OPERATING-SYSTEM
-docker build -t bitnami/APP:latest .
-```
+| Name                    | Description                          | Value                              |
+|-------------------------|--------------------------------------|------------------------------------|
+| `MINIO_CLIENT_BASE_DIR` | MinIO Client installation directory. | `${BITNAMI_ROOT_DIR}/minio-client` |
+| `MINIO_CLIENT_BIN_DIR`  | MinIO Client directory for binaries. | `${MINIO_CLIENT_BASE_DIR}/bin`     |
+| `MINIO_DAEMON_USER`     | MinIO system user.                   | `minio`                            |
+| `MINIO_DAEMON_GROUP`    | MinIO system group.                  | `minio`                            |
 
 ## Connecting to other containers
 
@@ -111,11 +108,11 @@ docker run --rm --name minio-client \
 
 MinIO(R) Client (`mc`) can be setup so it is already configured to point to a specific MinIO(R) server by providing the environment variables below:
 
-* `MINIO_SERVER_HOST`: MinIO(R) server host.
-* `MINIO_SERVER_PORT_NUMBER`: MinIO(R) server port. Default: `9000`.
-* `MINIO_SERVER_SCHEME`: MinIO(R) server scheme. Default: `http`.
-* `MINIO_SERVER_ACCESS_KEY`: MinIO(R) server Access Key. Must be common on every node.
-* `MINIO_SERVER_SECRET_KEY`: MinIO(R) server Secret Key. Must be common on every node.
+- `MINIO_SERVER_HOST`: MinIO(R) server host.
+- `MINIO_SERVER_PORT_NUMBER`: MinIO(R) server port. Default: `9000`.
+- `MINIO_SERVER_SCHEME`: MinIO(R) server scheme. Default: `http`.
+- `MINIO_SERVER_ACCESS_KEY`: MinIO(R) server Access Key. Must be common on every node.
+- `MINIO_SERVER_SECRET_KEY`: MinIO(R) server Secret Key. Must be common on every node.
 
 For instance, use the command below to create a new bucket in the MinIO(R) Server `my.minio.domain`:
 
@@ -130,17 +127,22 @@ docker run --rm --name minio-client \
 
 Find more information about the client configuration in the [MinIO(R) Client documentation](https://docs.min.io/docs/minio-admin-complete-guide.html).
 
-## Contributing
+### FIPS configuration in Bitnami Secure Images
 
-We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues) or submitting a [pull request](https://github.com/bitnami/containers/pulls) with your contribution.
+The Bitnami Bitnami Object Storage Client based on MinIO&reg; Docker image from the [Bitnami Secure Images](https://go-vmware.broadcom.com/contact-us) catalog includes extra features and settings to configure the container with FIPS capabilities. You can configure the next environment variables:
 
-## Issues
+- `OPENSSL_FIPS`: whether OpenSSL runs in FIPS mode or not. `yes` (default), `no`.
+- `GODEBUG`: controls Go FIPS mode. Use `fips140=only` (restricted), `fips140=on` (relaxed), or `fips140=off` (disabled).
 
-If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/containers/issues/new/choose). For us to provide better support, be sure to fill the issue template.
+## Notable Changes
+
+### Starting January 16, 2024
+
+- The `docker-compose.yaml` file has been removed, as it was solely intended for internal testing purposes.
 
 ## License
 
-Copyright &copy; 2023 VMware, Inc.
+Copyright &copy; 2026 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

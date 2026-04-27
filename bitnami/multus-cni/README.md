@@ -1,6 +1,4 @@
-# Multus CNI packaged by Bitnami
-
-## What is Multus CNI?
+# Bitnami Secure Image for Multus CNI
 
 > Multus is a CNI plugin for Kubernetes clusters. Written in Go, features adding multiple network interfaces to pods.
 
@@ -11,98 +9,37 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-docker run -it --name multus-cni bitnami/multus-cni
+docker run -it --name multus-cni bitnami/multus-cni:latest
 ```
 
-### Docker Compose
+## Why use Bitnami Secure Images?
 
-```console
-curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/multus-cni/docker-compose.yml > docker-compose.yml
-docker-compose up -d
-```
+Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami Secure Images are based on the cloud-optimized, security-hardened enterprise [OS Photon Linux](https://vmware.github.io/photon/). Why choose BSI images?
 
-## Why use Bitnami Images?
+- Hardened secure images of popular open source software with Near-Zero Vulnerabilities
+- Vulnerability Triage & Prioritization with VEX Statements, KEV and EPSS Scores
+- Compliance focus with FIPS, STIG, and air-gap options, including secure bill of materials (SBOM)
+- Software supply chain provenance attestation through in-toto
+- First class support for the internet’s favorite Helm charts
 
-* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With Bitnami images the latest bug fixes and features are available as soon as possible.
-* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
-* All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
-* All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
-* Bitnami container images are released on a regular basis with the latest distribution packages available.
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
 
-Looking to use Multus CNI in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
+
+If you are looking for our previous generation of images based on Debian Linux, please see the [Bitnami Legacy registry](https://hub.docker.com/u/bitnamilegacy).
 
 ## Supported tags and respective `Dockerfile` links
 
-Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
-
-You can see the equivalence between the different tags by taking a look at the `tags-info.yaml` file present in the branch folder, i.e `bitnami/ASSET/BRANCH/DISTRO/tags-info.yaml`.
-
-Subscribe to project updates by watching the [bitnami/containers GitHub repo](https://github.com/bitnami/containers).
+Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html).
 
 ## Get this image
 
-The recommended way to get the Bitnami Multus CNI Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/multus-cni).
-
-```console
-docker pull bitnami/multus-cni:latest
-```
-
-To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/bitnami/multus-cni/tags/) in the Docker Hub Registry.
-
-```console
-docker pull bitnami/multus-cni:[TAG]
-```
-
-If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
-
-```console
-git clone https://github.com/bitnami/containers.git
-cd bitnami/APP/VERSION/OPERATING-SYSTEM
-docker build -t bitnami/APP:latest .
-```
-
-## Maintenance
-
-### Upgrade this image
-
-Bitnami provides up-to-date versions of Multus CNI, including security patches, soon after they are made upstream. We recommend that you follow these steps to upgrade your container.
-
-#### Step 1: Get the updated image
-
-```console
-docker pull bitnami/multus-cni:latest
-```
-
-or if you're using Docker Compose, update the value of the image property to `bitnami/multus-cni:latest`.
-
-#### Step 2: Remove the currently running container
-
-```console
-docker rm -v multus-cni
-```
-
-or using Docker Compose:
-
-```console
-docker-compose rm -v multus-cni
-```
-
-#### Step 3: Run the new image
-
-Re-create your container from the new image.
-
-```console
-docker run --name multus-cni bitnami/multus-cni:latest
-```
-
-or using Docker Compose:
-
-```console
-docker-compose up multus-cni
-```
+The Bitnami Multus CNI Docker image is only available to [Bitnami Secure Images](https://bitnami.com) customers.
 
 ## Configuration
+
+The following section describes how to run commands
 
 ### Running commands
 
@@ -114,17 +51,22 @@ docker run --rm --entrypoint /opt/bitnami/multus-cni/bin/multus-daemon --name mu
 
 Check the [official Multus CNI documentation](https://github.com/k8snetworkplumbingwg/multus-cni) for more information about how to use Multus CNI.
 
-## Contributing
+### FIPS configuration in Bitnami Secure Images
 
-We'd love for you to contribute to this Docker image. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues) or submitting a [pull request](https://github.com/bitnami/containers/pulls) with your contribution.
+The Bitnami Multus CNI Docker image from the [Bitnami Secure Images](https://go-vmware.broadcom.com/contact-us) catalog includes extra features and settings to configure the container with FIPS capabilities. You can configure the next environment variables:
 
-## Issues
+- `OPENSSL_FIPS`: whether OpenSSL runs in FIPS mode or not. `yes` (default), `no`.
+- `GODEBUG`: controls Go FIPS mode. Use `fips140=only` (restricted), `fips140=on` (relaxed), or `fips140=off` (disabled).
 
-If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/containers/issues/new/choose). For us to provide better support, be sure to fill the issue template.
+## Notable Changes
+
+### Starting January 16, 2024
+
+- The `docker-compose.yaml` file has been removed, as it was solely intended for internal testing purposes.
 
 ## License
 
-Copyright &copy; 2023 VMware, Inc.
+Copyright &copy; 2026 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

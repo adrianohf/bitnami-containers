@@ -1,20 +1,35 @@
-<!-- markdownlint-disable-next-line -->
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/bitnami/containers/blob/main/CONTRIBUTING.md)
+<!-- markdownlint-disable MD041 -->
+<p align="center">
+    <img width="400px" height=auto src="https://dyltqmyl993wv.cloudfront.net/bitnami/bitnami-by-vmware.png" />
+</p>
+
+<p align="center">
+    <a href="https://twitter.com/bitnami"><img src="https://badgen.net/badge/twitter/@bitnami/1DA1F2?icon&label" /></a>
+    <a href="https://github.com/bitnami/containers"><img src="https://badgen.net/github/stars/bitnami/containers?icon=github" /></a>
+    <a href="https://github.com/bitnami/containers"><img src="https://badgen.net/github/forks/bitnami/containers?icon=github" /></a>
+    <a href="https://github.com/bitnami/containers/actions/workflows/ci-pipeline.yml"><img src="https://github.com/bitnami/containers/actions/workflows/ci-pipeline.yml/badge.svg" /></a>
+</p>
 
 # The Bitnami Containers Library
 
 Popular applications, provided by [Bitnami](https://bitnami.com), containerized and ready to launch.
 
-## Why use Bitnami Images?
+## Why use Bitnami Secure Images?
 
-* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With Bitnami images the latest bug fixes and features are available as soon as possible.
-* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
-* All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image that gives you a small base container image and the familiarity of a leading Linux distribution.
-* All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
-* Bitnami container images are released on a regular basis with the latest distribution packages available.
+Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami Secure Images are based on the cloud-optimized, security-hardened enterprise [OS Photon Linux](https://vmware.github.io/photon/). Why choose BSI images?
 
-Looking to use our applications in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
+- Hardened secure images of popular open source software with Near-Zero Vulnerabilities
+- Vulnerability Triage & Prioritization with VEX Statements, KEV and EPSS Scores
+- Compliance focus with FIPS, STIG, and air-gap options, including secure bill of materials (SBOM)
+- Software supply chain provenance attestation through in-toto
+- First class support for the internet’s favorite Helm charts
+
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
+
+If you are looking for our previous generation of images based on Debian Linux, please see the [Bitnami Legacy registry](https://hub.docker.com/u/bitnamilegacy).
 
 ## Get an image
 
@@ -30,7 +45,7 @@ To use a specific version, you can pull a versioned tag.
 docker pull bitnami/APP:[TAG]
 ```
 
-If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command.
+If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile, and executing the `docker build` command.
 
 ```console
 git clone https://github.com/bitnami/containers.git
@@ -38,7 +53,8 @@ cd bitnami/APP/VERSION/OPERATING-SYSTEM
 docker build -t bitnami/APP .
 ```
 
-> Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` placeholders in the example command above with the correct values.
+> [!TIP]
+> Remember to replace the `APP`, `VERSION`, and `OPERATING-SYSTEM` placeholders in the example command above with the correct values.
 
 ## Run the application using Docker Compose
 
@@ -49,21 +65,24 @@ curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/APP/
 docker-compose up -d
 ```
 
+> [!TIP]
 > Remember to replace the `APP` placeholder in the example command above with the correct value.
 
 ## Vulnerability scan in Bitnami container images
 
 As part of the release process, the Bitnami container images are analyzed for vulnerabilities. At this moment, we are using two different tools:
 
-* [Trivy](https://github.com/aquasecurity/trivy)
-* [Grype](https://github.com/anchore/grype)
+- [Trivy](https://github.com/aquasecurity/trivy)
+- [Grype](https://github.com/anchore/grype)
 
 This scanning process is triggered via a GH action for every PR affecting the source code of the containers, regardless of its nature or origin.
 
 ## Retention policy
 
-Deprecated assets will be retained in the container registry ([Bitnami DockerHub org](https://hub.docker.com/u/bitnami)) without changes for, at least, three months after the deprecation.
+Deprecated assets will be retained in the container registry ([Bitnami DockerHub org](https://hub.docker.com/u/bitnami)) without changes for, at least, 6 months after the deprecation.
 After that period, all the images will be moved to a new _"archived"_ repository. For instance, once deprecated an asset named _foo_ whose container repository was `bitnami/foo`, all the images will be moved to `bitnami/foo-archived` where they will remain indefinitely.
+
+Special images, like `bitnami/bitnami-shell` or `bitnami/sealed-secrets`, which are extensively used in Helm charts, will have an extended coexistence period of 1 year.
 
 ## Contributing
 
@@ -71,7 +90,7 @@ We'd love for you to contribute to those container images. You can request new f
 
 ## License
 
-Copyright &copy; 2023 VMware, Inc.
+Copyright &copy; 2026 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
 

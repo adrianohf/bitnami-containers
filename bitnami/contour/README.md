@@ -1,6 +1,4 @@
-# Contour packaged by Bitnami
-
-## What is Contour?
+# Bitnami Secure Image for Contour
 
 > Contour is an open source Kubernetes ingress controller that works by deploying the Envoy proxy as a reverse proxy and load balancer.
 
@@ -13,23 +11,22 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 docker run --name contour bitnami/contour:latest
 ```
 
-### Docker Compose
+## Why use Bitnami Secure Images?
 
-```console
-curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/contour/docker-compose.yml > docker-compose.yml
-docker-compose up -d
-```
+Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami Secure Images are based on the cloud-optimized, security-hardened enterprise [OS Photon Linux](https://vmware.github.io/photon/). Why choose BSI images?
 
-## Why use Bitnami Images?
+- Hardened secure images of popular open source software with Near-Zero Vulnerabilities
+- Vulnerability Triage & Prioritization with VEX Statements, KEV and EPSS Scores
+- Compliance focus with FIPS, STIG, and air-gap options, including secure bill of materials (SBOM)
+- Software supply chain provenance attestation through in-toto
+- First class support for the internet’s favorite Helm charts
 
-* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With Bitnami images the latest bug fixes and features are available as soon as possible.
-* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
-* All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
-* All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
-* Bitnami container images are released on a regular basis with the latest distribution packages available.
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
 
-Looking to use Contour in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
+
+If you are looking for our previous generation of images based on Debian Linux, please see the [Bitnami Legacy registry](https://hub.docker.com/u/bitnamilegacy).
 
 ## Why use a non-root container?
 
@@ -37,33 +34,11 @@ Non-root container images add an extra layer of security and are generally recom
 
 ## Supported tags and respective `Dockerfile` links
 
-Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
-
-You can see the equivalence between the different tags by taking a look at the `tags-info.yaml` file present in the branch folder, i.e `bitnami/ASSET/BRANCH/DISTRO/tags-info.yaml`.
-
-Subscribe to project updates by watching the [bitnami/containers GitHub repo](https://github.com/bitnami/containers).
+Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html).
 
 ## Get this image
 
-The recommended way to get the Bitnami contour Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/contour).
-
-```console
-docker pull bitnami/contour:latest
-```
-
-To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/bitnami/contour/tags/) in the Docker Hub Registry.
-
-```console
-docker pull bitnami/contour:[TAG]
-```
-
-If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
-
-```console
-git clone https://github.com/bitnami/containers.git
-cd bitnami/APP/VERSION/OPERATING-SYSTEM
-docker build -t bitnami/APP:latest .
-```
+The Bitnami Contour Docker image is only available to [Bitnami Secure Images](https://bitnami.com) customers.
 
 ## Persisting your application
 
@@ -75,16 +50,6 @@ For persistence you should mount a directory at the `/bitnami` path. If the moun
 docker run \
     -v /path/to/contour-persistence:/bitnami/contour \
     bitnami/contour:latest
-```
-
-You can also do this with a minor change to the [`docker-compose.yml`](https://github.com/bitnami/containers/blob/main/bitnami/contour/docker-compose.yml) file present in this repository:
-
-```yaml
-contour:
-  ...
-  volumes:
-    - /path/to/contour-persistence:/bitnami/contour
-  ...
 ```
 
 ## Connecting to other containers
@@ -117,67 +82,30 @@ We can launch another containers using the same flag (`--network NETWORK`) in th
 
 Find how to configure Contour in its [official documentation](https://projectcontour.io/docs/main/).
 
+### FIPS configuration in Bitnami Secure Images
+
+The Bitnami Contour Docker image from the [Bitnami Secure Images](https://go-vmware.broadcom.com/contact-us) catalog includes extra features and settings to configure the container with FIPS capabilities. You can configure the next environment variables:
+
+- `OPENSSL_FIPS`: whether OpenSSL runs in FIPS mode or not. `yes` (default), `no`.
+- `GODEBUG`: controls Go FIPS mode. Use `fips140=only` (restricted), `fips140=on` (relaxed), or `fips140=off` (disabled).
+
 ## Logging
 
-The Bitnami contour Docker image sends the container logs to `stdout`. To view the logs:
-
-```console
-docker logs contour
-```
-
-You can configure the containers [logging driver](https://docs.docker.com/engine/admin/logging/overview/) using the `--log-driver` option if you wish to consume the container logs differently. In the default configuration docker uses the `json-file` driver.
-
-## Maintenance
-
-### Upgrade this image
-
-Bitnami provides up-to-date versions of contour, including security patches, soon after they are made upstream. We recommend that you follow these steps to upgrade your container.
-
-#### Step 1: Get the updated image
-
-```console
-docker pull bitnami/contour:latest
-```
-
-#### Step 2: Stop the running container
-
-Stop the currently running container using the command
-
-```console
-docker stop contour
-```
-
-#### Step 3: Remove the currently running container
-
-```console
-docker rm -v contour
-```
-
-#### Step 4: Run the new image
-
-Re-create your container from the new image.
-
-```console
-docker run --name contour bitnami/contour:latest
-```
+The Bitnami Contour Docker image sends the container logs to the `stdout`. You can configure the containers [logging driver](https://docs.docker.com/engine/admin/logging/overview/) using the `--log-driver` option if you wish to consume the container logs differently. In the default configuration docker uses the `json-file` driver.
 
 ## Notable Changes
 
+### Starting January 16, 2024
+
+- The `docker-compose.yaml` file has been removed, as it was solely intended for internal testing purposes.
+
 ### 1.20.0-debian-10-r8 Rename branch 1.20
 
-* Branch 1 has been renamed into branch 1.20 in order to follow the upstream [Contour major versions](https://github.com/projectcontour/contour/releases).
-
-## Contributing
-
-We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues) or submitting a [pull request](https://github.com/bitnami/containers/pulls) with your contribution.
-
-## Issues
-
-If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/containers/issues/new/choose). For us to provide better support, be sure to fill the issue template.
+- Branch 1 has been renamed into branch 1.20 in order to follow the upstream [Contour major versions](https://github.com/projectcontour/contour/releases).
 
 ## License
 
-Copyright &copy; 2023 VMware, Inc.
+Copyright &copy; 2026 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

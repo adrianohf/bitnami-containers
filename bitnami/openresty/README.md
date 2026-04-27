@@ -1,6 +1,4 @@
-# OpenResty packaged by Bitnami
-
-## What is OpenResty?
+# Bitnami Secure Image for OpenResty
 
 > OpenResty is a platform for scalable Web applications and services. It is based on enhanced versions of NGINX and LuaJIT.
 
@@ -13,57 +11,34 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 docker run --name openresty bitnami/openresty:latest
 ```
 
-```console
-curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/openresty/docker-compose.yml > docker-compose.yml
-docker-compose up -d
-```
+## Why use Bitnami Secure Images?
 
-## Why use Bitnami Images?
+Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami Secure Images are based on the cloud-optimized, security-hardened enterprise [OS Photon Linux](https://vmware.github.io/photon/). Why choose BSI images?
 
-* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With Bitnami images the latest bug fixes and features are available as soon as possible.
-* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
-* All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
-* All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
-* Bitnami container images are released on a regular basis with the latest distribution packages available.
+- Hardened secure images of popular open source software with Near-Zero Vulnerabilities
+- Vulnerability Triage & Prioritization with VEX Statements, KEV and EPSS Scores
+- Compliance focus with FIPS, STIG, and air-gap options, including secure bill of materials (SBOM)
+- Software supply chain provenance attestation through in-toto
+- First class support for the internet’s favorite Helm charts
 
-Looking to use OpenResty in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
+
+If you are looking for our previous generation of images based on Debian Linux, please see the [Bitnami Legacy registry](https://hub.docker.com/u/bitnamilegacy).
 
 ## Why use a non-root container?
 
-Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://docs.bitnami.com/tutorials/work-with-non-root-containers/).
+Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-work-with-non-root-containers-index.html).
 
 ## Supported tags and respective `Dockerfile` links
 
-Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
-
-You can see the equivalence between the different tags by taking a look at the `tags-info.yaml` file present in the branch folder, i.e `bitnami/ASSET/BRANCH/DISTRO/tags-info.yaml`.
-
-Subscribe to project updates by watching the [bitnami/containers GitHub repo](https://github.com/bitnami/containers).
+Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html).
 
 ## Get this image
 
-The recommended way to get the Bitnami OpenResty Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/openresty).
-
-```console
-docker pull bitnami/openresty:latest
-```
-
-To use a specific version, you can pull a versioned tag. You can view the
-[list of available versions](https://hub.docker.com/r/bitnami/openresty/tags/)
-in the Docker Hub Registry.
-
-```console
-docker pull bitnami/openresty:[TAG]
-```
-
-If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
-
-```console
-git clone https://github.com/bitnami/containers.git
-cd bitnami/APP/VERSION/OPERATING-SYSTEM
-docker build -t bitnami/APP:latest .
-```
+The Bitnami OpenResty Docker image is only available to [Bitnami Secure Images](https://bitnami.com) customers.
 
 ## Hosting a static website
 
@@ -71,17 +46,6 @@ This OpenResty image exposes a volume at `/app`. Content mounted here is served 
 
 ```console
 docker run -v /path/to/app:/app bitnami/openresty:latest
-```
-
-or by modifying the [`docker-compose.yml`](https://github.com/bitnami/containers/blob/main/bitnami/openresty/docker-compose.yml) file present in this repository:
-
-```yaml
-services:
-  openresty:
-  ...
-    volumes:
-      - /path/to/app:/app
-  ...
 ```
 
 ## Accessing your server from the host
@@ -108,6 +72,42 @@ docker run -p 9000:8080 bitnami/openresty:latest
 Access your web server in the browser by navigating to `http://localhost:9000`.
 
 ## Configuration
+
+The following section describes the supported environment variables
+
+### Environment variables
+
+The following tables list the main variables you can set.
+
+#### Customizable environment variables
+
+| Name                          | Description                                                          | Default Value |
+|-------------------------------|----------------------------------------------------------------------|---------------|
+| `OPENRESTY_HTTP_PORT_NUMBER`  | HTTP port number used by OpenResty.                                  | `nil`         |
+| `OPENRESTY_HTTPS_PORT_NUMBER` | HTTPS port number used by OpenResty.                                 | `nil`         |
+| `OPENRESTY_FORCE_INITSCRIPTS` | Force the init scripts running even if it is not in the first start. | `false`       |
+
+#### Read-only environment variables
+
+| Name                                  | Description                                                  | Value                                       |
+|---------------------------------------|--------------------------------------------------------------|---------------------------------------------|
+| `OPENRESTY_BASE_DIR`                  | OpenResty installation directory.                            | `${BITNAMI_ROOT_DIR}/openresty`             |
+| `OPENRESTY_VOLUME_DIR`                | OpenResty directory for mounted files.                       | `${BITNAMI_VOLUME_DIR}/openresty`           |
+| `OPENRESTY_BIN_DIR`                   | OpenResty directory for binary executables.                  | `${OPENRESTY_BASE_DIR}/bin`                 |
+| `OPENRESTY_CONF_DIR`                  | OpenResty configuration directory.                           | `${OPENRESTY_BASE_DIR}/nginx/conf`          |
+| `OPENRESTY_HTDOCS_DIR`                | Directory containing HTTP files to serve via OpenResty.      | `${OPENRESTY_BASE_DIR}/nginx/html`          |
+| `OPENRESTY_TMP_DIR`                   | OpenResty directory for runtime temporary files.             | `${OPENRESTY_BASE_DIR}/nginx/tmp`           |
+| `OPENRESTY_LOGS_DIR`                  | OpenResty directory for logs.                                | `${OPENRESTY_BASE_DIR}/nginx/logs`          |
+| `OPENRESTY_SERVER_BLOCKS_DIR`         | OpenResty directory for virtual hosts.                       | `${OPENRESTY_CONF_DIR}/nginx/server_blocks` |
+| `OPENRESTY_SITE_DIR`                  | OpenResty directory for installing Lua packages.             | `${OPENRESTY_BASE_DIR}/site`                |
+| `OPENRESTY_INITSCRIPTS_DIR`           | OpenResty init scripts directory.                            | `/docker-entrypoint-initdb.d`               |
+| `OPM_BASE_DIR`                        | OpenResty package manager base directory.                    | `/home/openresty`                           |
+| `OPENRESTY_CONF_FILE`                 | Path to the OpenResty configuration.                         | `${OPENRESTY_CONF_DIR}/nginx.conf`          |
+| `OPENRESTY_PID_FILE`                  | Path to the OpenResty PID file.                              | `${OPENRESTY_TMP_DIR}/nginx.pid`            |
+| `OPENRESTY_DAEMON_USER`               | OpenResty system user.                                       | `daemon`                                    |
+| `OPENRESTY_DAEMON_GROUP`              | OpenResty system group.                                      | `daemon`                                    |
+| `OPENRESTY_DEFAULT_HTTP_PORT_NUMBER`  | Default OpenResty HTTP port number to enable at build time.  | `8080`                                      |
+| `OPENRESTY_DEFAULT_HTTPS_PORT_NUMBER` | Default OpenResty HTTPS port number to enable at build time. | `8443`                                      |
 
 ### Initializing a new instance
 
@@ -140,24 +140,13 @@ docker run --name openresty \
   bitnami/openresty:latest
 ```
 
-or by modifying the [`docker-compose.yml`](https://github.com/bitnami/containers/blob/main/bitnami/openresty/docker-compose.yml) file present in this repository:
-
-```yaml
-services:
-  openresty:
-  ...
-    volumes:
-      - /path/to/my_server_block.conf:/opt/bitnami/openresty/nginx/conf/server_blocks/my_server_block.conf:ro
-  ...
-```
-
 ### Using custom SSL certificates
 
 *NOTE:* The steps below assume that you are using a custom domain name and that you have already configured the custom domain name to point to your server.
 
 #### Step 1: Prepare your certificate files
 
-In your local computer, create a folder called `certs` and put your certificates files. Make sure you rename both files to `server.crt` and `server.key` respectively:
+In your local computer, create a folder called `certs` and put your certificates files. Make sure you rename both files to `tls.crt` and `tls.key` respectively:
 
 ```console
 mkdir -p /path/to/openresty-persistence/certs
@@ -200,18 +189,6 @@ docker run --name openresty \
   bitnami/openresty:latest
 ```
 
-or by modifying the [`docker-compose.yml`](https://github.com/bitnami/containers/blob/main/bitnami/openresty/docker-compose.yml) file present in this repository:
-
-```yaml
-services:
-  openresty:
-  ...
-    volumes:
-    - /path/to/openresty-persistence/certs:/certs
-    - /path/to/my_server_block.conf:/opt/bitnami/openresty/nginx/conf/server_blocks/my_server_block.conf:ro
-  ...
-```
-
 ### Full configuration
 
 The image looks for configurations in `/opt/bitnami/openresty/nginx/conf/nginx.conf`. You can overwrite the `nginx.conf` file using your own custom configuration file.
@@ -220,17 +197,6 @@ The image looks for configurations in `/opt/bitnami/openresty/nginx/conf/nginx.c
 docker run --name openresty \
   -v /path/to/your_nginx.conf:/opt/bitnami/openresty/nginx/conf/nginx.conf:ro \
   bitnami/openresty:latest
-```
-
-or by modifying the [`docker-compose.yml`](https://github.com/bitnami/containers/blob/main/bitnami/openresty/docker-compose.yml) file present in this repository:
-
-```yaml
-services:
-  openresty:
-  ...
-    volumes:
-      - /path/to/your_nginx.conf:/opt/bitnami/openresty/nginx/conf/nginx.conf:ro
-  ...
 ```
 
 ### Adding lua modules
@@ -243,6 +209,20 @@ RUN opm get openresty/lua-resty-lock
 ```
 
 Additionally, you can install your custom Lua modules using [your custom init scripts](#initializing-a-new-instance).
+
+#### NGINX HTTP DAV module
+
+The [module ngx_http_dav_module](https://nginx.org/en/docs/http/ngx_http_dav_module.html) is intended for file management automation via the WebDAV protocol. In current Bitnami images, this module is built as a dynamic module located under the `/opt/bitnami/openresty/nginx/modules` directory. You will need to load it in your configuration for you to be able to use its directives.
+
+```text
+load_module /opt/bitnami/openresty/nginx/modules/ngx_http_dav_module.so;
+```
+
+### FIPS configuration in Bitnami Secure Images
+
+The Bitnami OpenResty Docker image from the [Bitnami Secure Images](https://go-vmware.broadcom.com/contact-us) catalog includes extra features and settings to configure the container with FIPS capabilities. You can configure the next environment variables:
+
+- `OPENSSL_FIPS`: whether OpenSSL runs in FIPS mode or not. `yes` (default), `no`.
 
 ## Reverse proxy to other containers
 
@@ -268,7 +248,7 @@ server {
 
 **Further Reading:**
 
-* [NGINX reverse proxy](http://nginx.com/resources/admin-guide/reverse-proxy/)
+- [NGINX reverse proxy](http://nginx.com/resources/admin-guide/reverse-proxy/)
 
 ## Logging
 
@@ -276,12 +256,6 @@ The Bitnami OpenResty Docker image sends the container logs to the `stdout`. To 
 
 ```console
 docker logs openresty
-```
-
-or using Docker Compose:
-
-```console
-docker-compose logs openresty
 ```
 
 You can configure the containers [logging driver](https://docs.docker.com/engine/admin/logging/overview/) using the `--log-driver` option if you wish to consume the container logs differently. In the default configuration docker uses the `json-file` driver.
@@ -294,11 +268,11 @@ The Bitnami OpenResty Docker image is designed to be extended so it can be used 
 
 Before extending this image, please note there are certain configuration settings you can modify using the original image:
 
-* Settings that can be adapted using environment variables. For instance, you can change the port used by OpenResty for HTTP setting the environment variable `OPENRESTY_HTTP_PORT_NUMBER`.
-* [Initializing a new instance](#initializing-a-new-instance)
-* [Adding custom server blocks](#adding-custom-server-blocks).
-* [Replacing the 'nginx.conf' file](#full-configuration).
-* [Using custom SSL certificates](#using-custom-ssl-certificates).
+- Settings that can be adapted using environment variables. For instance, you can change the port used by OpenResty for HTTP setting the environment variable `OPENRESTY_HTTP_PORT_NUMBER`.
+- [Initializing a new instance](#initializing-a-new-instance)
+- [Adding custom server blocks](#adding-custom-server-blocks).
+- [Replacing the 'nginx.conf' file](#full-configuration).
+- [Using custom SSL certificates](#using-custom-ssl-certificates).
 
 If your desired customizations cannot be covered using the methods mentioned above, extend the image. To do so, create your own image using a Dockerfile with the format below:
 
@@ -310,10 +284,10 @@ FROM bitnami/openresty
 
 Here is an example of extending the image with the following modifications:
 
-* Install the `vim` editor
-* Modify the OpenResty configuration file
-* Modify the ports used by OpenResty
-* Change the user that runs the container
+- Install the `vim` editor
+- Modify the OpenResty configuration file
+- Modify the ports used by OpenResty
+- Change the user that runs the container
 
 ```Dockerfile
 FROM bitnami/openresty
@@ -336,106 +310,19 @@ EXPOSE 8181 8143
 USER 1002
 ```
 
-Based on the extended image, you can use a Docker Compose file like the one below to add other features:
+## Notable Changes
 
-* Add a custom server block
-* Add custom certificates
-* Clone your web application and serve it through OpenResty
+### Starting February 10, 2025
 
-```yaml
-version: '2'
+- The [module ngx_http_dav_module](http://nginx.org/en/docs/http/ngx_http_dav_module.html), WebDAV protocol, has been converted into a dynamic module.
 
-services:
-  openresty:
-    build: .
-    ports:
-      - '80:8181'
-      - '443:8443'
-    depends_on:
-      - cloner
-    volumes:
-      - ./config/my_server_block.conf:/opt/bitnami/openresty/nginx/conf/server_blocks/my_server_block.conf:ro
-      - ./certs:/certs
-      - data:/app
-  cloner:
-    image: 'bitnami/git:latest'
-    command:
-      - clone
-      - https://github.com/cloudacademy/static-website-example
-      - /app
-    volumes:
-      - data:/app
-volumes:
-  data:
-    driver: local
-```
+### Starting January 16, 2024
 
-## Maintenance
-
-### Upgrade this image
-
-Bitnami provides up-to-date versions of OpenResty, including security patches, soon after they are made upstream. We recommend that you follow these steps to upgrade your container.
-
-#### Step 1: Get the updated image
-
-```console
-docker pull bitnami/openresty:latest
-```
-
-or if you're using Docker Compose, update the value of the image property to
-`bitnami/openresty:latest`.
-
-#### Step 2: Stop and backup the currently running container
-
-Stop the currently running container using the command
-
-```console
-docker stop openresty
-```
-
-or using Docker Compose:
-
-```console
-docker-compose stop openresty
-```
-
-#### Step 3: Remove the currently running container
-
-```console
-docker rm -v openresty
-```
-
-or using Docker Compose:
-
-```console
-docker-compose rm -v openresty
-```
-
-#### Step 4: Run the new image
-
-Re-create your container from the new image.
-
-```console
-docker run --name nginx bitnami/openresty:latest
-```
-
-or using Docker Compose:
-
-```console
-docker-compose up openresty
-```
-
-## Contributing
-
-We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues) or submitting a [pull request](https://github.com/bitnami/containers/pulls) with your contribution.
-
-## Issues
-
-If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/containers/issues/new/choose). For us to provide better support, be sure to fill the issue template.
+- The `docker-compose.yaml` file has been removed, as it was solely intended for internal testing purposes.
 
 ## License
 
-Copyright &copy; 2023 VMware, Inc.
+Copyright &copy; 2026 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

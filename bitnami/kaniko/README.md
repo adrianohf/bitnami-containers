@@ -1,10 +1,8 @@
-# Kaniko packaged by Bitnami
-
-## What is Kaniko?
+# Bitnami Secure Image for Kaniko
 
 > Kaniko is a tool that builds and pushes container images directly in userspace. This allows securely building container images in environments like a standard Kubernetes cluster.
 
-[Overview of Kaniko](https://github.com/GoogleContainerTools/kaniko)
+[Overview of Kaniko](https://github.com/chainguard-dev/kaniko)
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
@@ -13,95 +11,66 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 docker run -it --name kaniko bitnami/kaniko
 ```
 
-### Docker Compose
+## Why use Bitnami Secure Images?
 
-```console
-curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/kaniko/docker-compose.yml > docker-compose.yml
-docker-compose up -d
-```
+Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami Secure Images are based on the cloud-optimized, security-hardened enterprise [OS Photon Linux](https://vmware.github.io/photon/). Why choose BSI images?
 
-## Why use Bitnami Images?
+- Hardened secure images of popular open source software with Near-Zero Vulnerabilities
+- Vulnerability Triage & Prioritization with VEX Statements, KEV and EPSS Scores
+- Compliance focus with FIPS, STIG, and air-gap options, including secure bill of materials (SBOM)
+- Software supply chain provenance attestation through in-toto
+- First class support for the internet’s favorite Helm charts
 
-* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With Bitnami images the latest bug fixes and features are available as soon as possible.
-* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
-* All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
-* All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
-* Bitnami container images are released on a regular basis with the latest distribution packages available.
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
 
-Looking to use Kaniko in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
+
+If you are looking for our previous generation of images based on Debian Linux, please see the [Bitnami Legacy registry](https://hub.docker.com/u/bitnamilegacy).
 
 ## Supported tags and respective `Dockerfile` links
 
-Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
+Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html).
 
-You can see the equivalence between the different tags by taking a look at the `tags-info.yaml` file present in the branch folder, i.e `bitnami/ASSET/BRANCH/DISTRO/tags-info.yaml`.
+## Choosing between the _Standard_ and _Minimal_ image
 
-Subscribe to project updates by watching the [bitnami/containers GitHub repo](https://github.com/bitnami/containers).
+This asset is available in two flavors: _Standard_ and _Minimal_; designed to address different use cases and operational needs.
+
+### Standard images
+
+The standard images are full-featured, production-ready containers built on top of secure base operating systems. They include:
+
+- The complete runtime and commonly used system tools.
+- A familiar Linux environment (shell, package manager, debugging utilities).
+- Full compatibility with most CI/CD pipelines and existing workloads.
+
+Recommended for:
+
+- Development and testing environments.
+- Workloads requiring package installation or debugging tools.
+- Applications that depend on system utilities or shared libraries.
+
+### Minimal images
+
+The minimal images are optimized, distroless-style containers derived from a stripped-down base. They only ship what’s strictly necessary to run the application; no shell, package manager, or extra libraries. They provide:
+
+- Smaller size: Faster pull and startup times.
+- Reduced attack surface: Fewer components and potential vulnerabilities.
+- Simpler maintenance: Fewer dependencies to patch or update.
+
+Recommended for:
+
+- Production environments prioritizing performance and security.
+- Regulated or security-sensitive workloads
+- Containers built via multi-stage builds (e.g., Golang static binaries).
 
 ## Get this image
 
-The recommended way to get the Bitnami Kaniko Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/kaniko).
-
-```console
-docker pull bitnami/kaniko:latest
-```
-
-To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/bitnami/kaniko/tags/) in the Docker Hub Registry.
-
-```console
-docker pull bitnami/kaniko:[TAG]
-```
-
-If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
-
-```console
-git clone https://github.com/bitnami/containers.git
-cd bitnami/APP/VERSION/OPERATING-SYSTEM
-docker build -t bitnami/APP:latest .
-```
-
-## Maintenance
-
-### Upgrade this image
-
-Bitnami provides up-to-date versions of Kaniko, including security patches, soon after they are made upstream. We recommend that you follow these steps to upgrade your container.
-
-#### Step 1: Get the updated image
-
-```console
-docker pull bitnami/kaniko:latest
-```
-
-or if you're using Docker Compose, update the value of the image property to `bitnami/kaniko:latest`.
-
-#### Step 2: Remove the currently running container
-
-```console
-docker rm -v kaniko
-```
-
-or using Docker Compose:
-
-```console
-docker-compose rm -v kaniko
-```
-
-#### Step 3: Run the new image
-
-Re-create your container from the new image.
-
-```console
-docker run --name kaniko bitnami/kaniko:latest
-```
-
-or using Docker Compose:
-
-```console
-docker-compose up kaniko
-```
+The Bitnami Kaniko Docker image is only available to [Bitnami Secure Images](https://bitnami.com) customers.
 
 ## Configuration
+
+The following section describes how to run commands
 
 ### Running commands
 
@@ -111,19 +80,29 @@ To run commands inside this container you can use `docker run`, for example to e
 docker run --rm --name kaniko bitnami/kaniko:latest --help
 ```
 
-Check the [official Kaniko documentation](https://github.com/GoogleContainerTools/kanikodocs/) for more information about how to use Kaniko.
+Check the [official Kaniko documentation](https://github.com/chainguard-dev/kanikodocs/) for more information about how to use Kaniko.
 
-## Contributing
+## Notable Changes
 
-We'd love for you to contribute to this Docker image. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues) or submitting a [pull request](https://github.com/bitnami/containers/pulls) with your contribution.
+### Starting September 23, 2025
 
-## Issues
+* The `bitnami/kaniko` is now based on minimal Linux distribution instead of scratch. This change means the container now includes a shell and basic utilities, allowing you to easily debug and troubleshoot within the container.
 
-If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/containers/issues/new/choose). For us to provide better support, be sure to fill the issue template.
+### Starting January 16, 2024
+
+- The `docker-compose.yaml` file has been removed, as it was solely intended for internal testing purposes.
+
+
+### FIPS configuration in Bitnami Secure Images
+
+The Bitnami Kaniko Docker image from the [Bitnami Secure Images](https://go-vmware.broadcom.com/contact-us) catalog includes extra features and settings to configure the container with FIPS capabilities. You can configure the next environment variables:
+
+- `OPENSSL_FIPS`: whether OpenSSL runs in FIPS mode or not. `yes` (default), `no`.
+- `GODEBUG`: controls Go FIPS mode. Use `fips140=only` (restricted), `fips140=on` (relaxed), or `fips140=off` (disabled).
 
 ## License
 
-Copyright &copy; 2023 VMware, Inc.
+Copyright &copy; 2026 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

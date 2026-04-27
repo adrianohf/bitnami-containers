@@ -1,6 +1,4 @@
-# Jenkins Agent packaged by Bitnami
-
-## What is Jenkins Agent?
+# Bitnami Secure Image for Jenkins Agent
 
 > Jenkins Agent executable (agent.jar). This executable is an instance of the Jenkins Remoting library.
 
@@ -15,68 +13,75 @@ docker run --name jenkins-agent --env JENKINS_URL=http://jenkins:port bitnami/je
 
 You can find all the available configuration options in the [Environment Variables](#environment-variables) section.
 
-## Why use Bitnami Images?
+## Why use Bitnami Secure Images?
 
-* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With Bitnami images the latest bug fixes and features are available as soon as possible.
-* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
-* All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
-* All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
-* Bitnami container images are released on a regular basis with the latest distribution packages available.
+Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami Secure Images are based on the cloud-optimized, security-hardened enterprise [OS Photon Linux](https://vmware.github.io/photon/). Why choose BSI images?
 
-Looking to use Jenkins Agent in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
+- Hardened secure images of popular open source software with Near-Zero Vulnerabilities
+- Vulnerability Triage & Prioritization with VEX Statements, KEV and EPSS Scores
+- Compliance focus with FIPS, STIG, and air-gap options, including secure bill of materials (SBOM)
+- Software supply chain provenance attestation through in-toto
+- First class support for the internet’s favorite Helm charts
+
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
+
+If you are looking for our previous generation of images based on Debian Linux, please see the [Bitnami Legacy registry](https://hub.docker.com/u/bitnamilegacy).
 
 ## Why use a non-root container?
 
-Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://docs.bitnami.com/tutorials/work-with-non-root-containers/).
+Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-work-with-non-root-containers-index.html).
 
 ## Supported tags and respective `Dockerfile` links
 
-Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
-
-You can see the equivalence between the different tags by taking a look at the `tags-info.yaml` file present in the branch folder, i.e `bitnami/ASSET/BRANCH/DISTRO/tags-info.yaml`.
-
-Subscribe to project updates by watching the [bitnami/containers GitHub repo](https://github.com/bitnami/containers).
+Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html).
 
 ## Get this image
 
-The recommended way to get the Bitnami Jenkins Agent Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/jenkins).
-
-```console
-docker pull bitnami/jenkins-agent:latest
-```
-
-To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/bitnami/jenkins/tags/) in the Docker Hub Registry.
-
-```console
-docker pull bitnami/jenkins-agent:[TAG]
-```
-
-If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
-
-```console
-git clone https://github.com/bitnami/containers.git
-cd bitnami/APP/VERSION/OPERATING-SYSTEM
-docker build -t bitnami/APP:latest .
-```
+The Bitnami Jenkins Agent Docker image is only available to [Bitnami Secure Images](https://bitnami.com) customers.
 
 ## Configuration
 
+The following section describes the supported environment variables
+
 ### Environment variables
 
-When you start the Jenkins Agent image, you can adjust the configuration of the instance by passing one or more environment variables either on the docker-compose file or on the `docker run` command line. If you want to add a new environment variable:
+The following tables list the main variables you can set.
 
-* For docker-compose add the variable name and value under the application section in the [`docker-compose.yml`](https://github.com/bitnami/containers/blob/main/bitnami/jenkins/docker-compose.yml) file present in this repository:
+#### Customizable environment variables
 
-    ```yaml
-    jenkins-agent:
-      ...
-      environment:
-        - JENKINS_URL=http://jenkins:port
-      ...
-    ```
+| Name                              | Description                                                                                                                                | Default Value                      |
+|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------|
+| `JENKINS_AGENT_TUNNEL`            | Connect to the specified host and port, instead of connecting directly to Jenkins. Useful when connection to Jenkins needs to be tunneled. | `nil`                              |
+| `JENKINS_AGENT_URL`               | Specify the Jenkins root URLs to connect to.                                                                                               | `nil`                              |
+| `JENKINS_AGENT_PROTOCOLS`         | Specify the remoting protocols to attempt when instanceIdentity is provided                                                                | `nil`                              |
+| `JENKINS_AGENT_DIRECT_CONNECTION` | Connect directly to this TCP agent port, skipping the HTTP(S) connection                                                                   | `nil`                              |
+| `JENKINS_AGENT_INSTANCE_IDENTITY` | The base64 encoded InstanceIdentity byte array of the Jenkins controller                                                                   | `nil`                              |
+| `JENKINS_AGENT_WORKDIR`           | The working directory of the remoting instance (stores cache and logs by default).                                                         | `${JENKINS_AGENT_VOLUME_DIR}/home` |
+| `JENKINS_AGENT_WEB_SOCKET`        | Make a WebSocket connection to Jenkins rather than using the TCP port                                                                      | `false`                            |
+| `JENKINS_AGENT_SECRET`            | Jenkins agent name                                                                                                                         | `nil`                              |
+| `JENKINS_AGENT_NAME`              | Jenkins agent secret                                                                                                                       | `nil`                              |
+| `JAVA_HOME`                       | Java Home directory.                                                                                                                       | `${BITNAMI_ROOT_DIR}/java`         |
+| `JAVA_OPTS`                       | Java options.                                                                                                                              | `nil`                              |
 
-* For manual execution add a `--env` option with each variable and value:
+#### Read-only environment variables
+
+| Name                         | Description                                          | Value                                         |
+|------------------------------|------------------------------------------------------|-----------------------------------------------|
+| `JENKINS_AGENT_BASE_DIR`     | Jenkins Agent installation directory.                | `${BITNAMI_ROOT_DIR}/jenkins-agent`           |
+| `JENKINS_AGENT_LOGS_DIR`     | Jenkins Agent directory for log files.               | `${JENKINS_AGENT_BASE_DIR}/logs`              |
+| `JENKINS_AGENT_LOG_FILE`     | Path to the Jenkins Agent log file.                  | `${JENKINS_AGENT_LOGS_DIR}/jenkins-agent.log` |
+| `JENKINS_AGENT_TMP_DIR`      | Jenkins Agent directory for runtime temporary files. | `${JENKINS_AGENT_BASE_DIR}/tmp`               |
+| `JENKINS_AGENT_PID_FILE`     | Path to the Jenkins Agent PID file.                  | `${JENKINS_AGENT_TMP_DIR}/jenkins-agent.pid`  |
+| `JENKINS_AGENT_VOLUME_DIR`   | Persistence base directory.                          | `${BITNAMI_VOLUME_DIR}/jenkins`               |
+| `JENKINS_AGENT_DAEMON_USER`  | Jenkins Agent system user.                           | `jenkins`                                     |
+| `JENKINS_AGENT_DAEMON_GROUP` | Jenkins Agent system group.                          | `jenkins`                                     |
+
+When you start the Jenkins Agent image, you can adjust the configuration of the instance by passing one or more environment variables either on the `docker run` command line. If you want to add a new environment variable:
+
+- For manual execution add a `--env` option with each variable and value:
 
     ```console
     $ docker run -d --name jenkins-agent \
@@ -84,24 +89,12 @@ When you start the Jenkins Agent image, you can adjust the configuration of the 
       bitnami/jenkins-agent:latest
     ```
 
-Available environment variables:
+### FIPS configuration in Bitnami Secure Images
 
-#### User and Site configuration
+The Bitnami Jenkins Agent Docker image from the [Bitnami Secure Images](https://go-vmware.broadcom.com/contact-us) catalog includes extra features and settings to configure the container with FIPS capabilities. You can configure the next environment variables:
 
-* `JENKINS_AGENT_WORKDIR`: The working directory of the remoting instance (stores cache and logs by default). Default: **/bitnami/jenkins/home**
-* `JENKINS_URL`: Specify the Jenkins root URLs to connect to.
-* `JENKINS_AGENT_TUNNEL`: Connect to the specified host and port, instead of connecting directly to Jenkins. Useful when connection to Jenkins needs to be tunneled.
-* `JENKINS_AGENT_PROTOCOLS`: Specify the remoting protocols to attempt when instanceIdentity is provided.
-* `JENKINS_AGENT_DIRECT_CONNECTION`: Connect directly to this TCP agent port, skipping the HTTP(S) connection.
-* `JENKINS_AGENT_INSTANCE_IDENTITY`: The base64 encoded InstanceIdentity byte array of the Jenkins controller.
-* `JENKINS_AGENT_WEB_SOCKET`: Make a WebSocket connection to Jenkins rather than using the TCP port. Default: **false**
-* `JENKINS_AGENT_SECRET`: Jenkins Agent name.
-* `JENKINS_AGENT_NAME`: Jenkins Agent secret.
-
-##### JAVA configuration
-
-* `JAVA_OPTS`: Customize JVM parameters. No defaults.
-* `JAVA_HOME`: Java Home directory. Default: **/opt/bitnami/java**
+- `OPENSSL_FIPS`: whether OpenSSL runs in FIPS mode or not. `yes` (default), `no`.
+- `JAVA_TOOL_OPTIONS`: controls Java FIPS mode. Use `-Djava.security.properties==/opt/bitnami/java/conf/security/java.security.restricted` (restricted), `-Djava.security.properties==/opt/bitnami/java/conf/security/java.security.relaxed` (relaxed), or `-Djava.security.properties==/opt/bitnami/java/conf/security/java.security.original` (off).
 
 ## Logging
 
@@ -111,15 +104,7 @@ The Bitnami Jenkins Agent Docker image sends the container logs to `stdout`. To 
 docker logs jenkins
 ```
 
-Or using Docker Compose:
-
-```console
-docker-compose logs jenkins
-```
-
 You can configure the containers [logging driver](https://docs.docker.com/engine/admin/logging/overview/) using the `--log-driver` option if you wish to consume the container logs differently. In the default configuration docker uses the `json-file` driver.
-
-## Maintenance
 
 ## Customize this image
 
@@ -135,17 +120,15 @@ FROM bitnami/jenkins-agent
 ...
 ```
 
-## Contributing
+## Notable Changes
 
-We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues) or submitting a [pull request](https://github.com/bitnami/containers/pulls) with your contribution.
+### Starting January 16, 2024
 
-## Issues
-
-If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/containers/issues/new/choose). For us to provide better support, be sure to fill the issue template.
+- The `docker-compose.yaml` file has been removed, as it was solely intended for internal testing purposes.
 
 ## License
 
-Copyright &copy; 2023 VMware, Inc.
+Copyright &copy; 2026 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

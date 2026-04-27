@@ -1,6 +1,4 @@
-# NATS packaged by Bitnami
-
-## What is NATS?
+# Bitnami Secure Image for NATS
 
 > NATS is an open source, lightweight and high-performance messaging system. It is ideal for distributed systems and supports modern cloud architectures and pub-sub, request-reply and queuing models.
 
@@ -10,267 +8,90 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 ## TL;DR
 
 ```console
-docker run -it --name nats bitnami/nats
+docker run -it --name nats bitnami/nats:latest
 ```
 
-### Docker Compose
+## Using `docker-compose.yml`
 
-```console
-curl -LO https://raw.githubusercontent.com/bitnami/containers/main/bitnami/nats/docker-compose.yml
-docker-compose up
-```
+The docker-compose.yaml file of this container can be found in the [Bitnami Containers repository](https://github.com/bitnami/containers/).
 
-## Why use Bitnami Images?
+[https://github.com/bitnami/containers/tree/main/bitnami/nats/docker-compose.yml](https://github.com/bitnami/containers/tree/main/bitnami/nats/docker-compose.yml)
 
-* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With Bitnami images the latest bug fixes and features are available as soon as possible.
-* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
-* All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
-* All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
-* Bitnami container images are released on a regular basis with the latest distribution packages available.
+Please be aware this file has not undergone internal testing. Consequently, we advise its use exclusively for development or testing purposes. For production-ready deployments, we highly recommend utilizing its associated [Bitnami Helm chart](https://github.com/bitnami/charts/tree/main/bitnami/nats).
 
-Looking to use NATS in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
+## Why use Bitnami Secure Images?
 
-## How to deploy NATS in Kubernetes?
+Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami Secure Images are based on the cloud-optimized, security-hardened enterprise [OS Photon Linux](https://vmware.github.io/photon/). Why choose BSI images?
+
+- Hardened secure images of popular open source software with Near-Zero Vulnerabilities
+- Vulnerability Triage & Prioritization with VEX Statements, KEV and EPSS Scores
+- Compliance focus with FIPS, STIG, and air-gap options, including secure bill of materials (SBOM)
+- Software supply chain provenance attestation through in-toto
+- First class support for the internet’s favorite Helm charts
+
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
+
+If you are looking for our previous generation of images based on Debian Linux, please see the [Bitnami Legacy registry](https://hub.docker.com/u/bitnamilegacy).
+
+## How to deploy NATS in Kubernetes
 
 Deploying Bitnami applications as Helm Charts is the easiest way to get started with our applications on Kubernetes. Read more about the installation in the [Bitnami NATS Chart GitHub repository](https://github.com/bitnami/charts/tree/master/bitnami/nats).
 
-Bitnami containers can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
-
 ## Why use a non-root container?
 
-Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://docs.bitnami.com/tutorials/work-with-non-root-containers/).
+Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-work-with-non-root-containers-index.html).
 
 ## Supported tags and respective `Dockerfile` links
 
-Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
-
-You can see the equivalence between the different tags by taking a look at the `tags-info.yaml` file present in the branch folder, i.e `bitnami/ASSET/BRANCH/DISTRO/tags-info.yaml`.
-
-Subscribe to project updates by watching the [bitnami/containers GitHub repo](https://github.com/bitnami/containers).
-
-## Prerequisites
-
-To run this application you need [Docker Engine](https://www.docker.com/products/docker-engine) >= `1.10.0`. [Docker Compose](https://docs.docker.com/compose/) is recommended with a version `1.6.0` or later.
+Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html).
 
 ## Get this image
 
-The recommended way to get the Bitnami NATS Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/nats).
-
-```console
-docker pull bitnami/nats:latest
-```
-
-To use a specific version, you can pull a versioned tag. You can view the
-[list of available versions](https://hub.docker.com/r/bitnami/nats/tags/)
-in the Docker Hub Registry.
-
-```console
-docker pull bitnami/nats:[TAG]
-```
-
-If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
-
-```console
-git clone https://github.com/bitnami/containers.git
-cd bitnami/APP/VERSION/OPERATING-SYSTEM
-docker build -t bitnami/APP:latest .
-```
-
-## Connecting to other containers
-
-Using [Docker container networking](https://docs.docker.com/engine/userguide/networking/), a NATS server running inside a container can easily be accessed by your application containers using a NATS client.
-
-Containers attached to the same network can communicate with each other using the container name as the hostname.
-
-### Using the Command Line
-
-In this example, we will create a NATS client instance that will connect to the server instance that is running on the same docker network as the client.
-
-#### Step 1: Create a network
-
-```console
-docker network create app-tier --driver bridge
-```
-
-#### Step 2: Launch the NATS server instance
-
-Use the `--network app-tier` argument to the `docker run` command to attach the NATS container to the `app-tier` network.
-
-```console
-docker run -d --name nats-server \
-    --network app-tier \
-    --publish 4222:4222 \
-    --publish 6222:6222 \
-    --publish 8222:8222 \
-    bitnami/nats:latest
-```
-
-#### Step 3: Launch your NATS client instance
-
-You can create a small script which downloads, installs and uses the [NATS Golang client](https://github.com/nats-io/go-nats).
-
-There are some examples available to use that client. For instance, write the script below and save it as *nats-pub.sh* to use the publishing example:
-
-```console
-##!/bin/bash
-
-go get github.com/nats-io/go-nats
-go build /go/src/github.com/nats-io/go-nats/examples/nats-pub.go
-./nats-pub -s nats://nats-server:4222 "$1" "$2"
-```
-
-Then, you can use the script to create a client instance as shown below:
-
-```console
-docker run -it --rm \
-    --network app-tier \
-    --volume /path/to/your/workspace:/go
-    golang ./nats-pub.sh foo bar
-```
-
-### Using a Docker Compose file
-
-When not specified, Docker Compose automatically sets up a new network and attaches all deployed services to that network. However, we will explicitly define a new `bridge` network named `app-tier`. In this example we assume that you want to connect to the NATS server from your own custom application image which is identified in the following snippet by the service name `myapp`.
-
-```yaml
-version: '2'
-
-networks:
-  app-tier:
-    driver: bridge
-
-services:
-  nats:
-    image: 'bitnami/nats:latest'
-    ports:
-      - 4222:4222
-      - 6222:6222
-      - 8222:8222
-    networks:
-      - app-tier
-  myapp:
-    image: 'YOUR_APPLICATION_IMAGE'
-    networks:
-      - app-tier
-```
-
-> **IMPORTANT**:
->
-> 1. Please update the `YOUR_APPLICATION_IMAGE` placeholder in the above snippet with your application image
-> 2. In your application container, use the hostname `nats` to connect to the NATS server
-
-Launch the containers using:
-
-```console
-docker-compose up -d
-```
+The Bitnami NATS Docker image is only available to [Bitnami Secure Images](https://bitnami.com) customers.
 
 ## Configuration
 
-### Environment variables
+The following sections describe how to run commands and where to find further documentation.
 
-When you start the NATS image, you can adjust the configuration of the instance by passing one or more environment variables either on the docker-compose file or on the `docker run` command line. If you want to add a new environment variable:
+### Running commands
 
-* For docker-compose add the variable name and value under the application section in the [`docker-compose.yml`](https://github.com/bitnami/containers/blob/main/bitnami/nats/docker-compose.yml) file present in this repository:
-
-```yaml
-nats:
-  ...
-  environment:
-    - NATS_ENABLE_AUTH=yes
-    - NATS_PASSWORD=my_password
-  ...
-```
-
-* For manual execution add a `--env` option with each variable and value:
-
-  ```console
-  docker run -d --name nats -p 4222:4222 -p 6222:6222 -p 8222:8222 \
-    --env NATS_ENABLE_AUTH=yes \
-    --env NATS_PASSWORD=my_password \
-    bitnami/nats:latest
-  ```
-
-Available environment variables:
-
-#### NATS configuration
-
-* `NATS_BIND_ADDRESS`: NATS bind address. Default: **0.0.0.0**
-* `NATS_CLIENT_PORT_NUMBER`: NATS Client port number. Default: **4222**
-* `NATS_CLUSTER_PORT_NUMBER`: NATS Cluster port number. Default: **6222**
-* `NATS_HTTP_PORT_NUMBER`: NATS HTTP port number. Default: **8222**
-* `NATS_HTTPS_PORT_NUMBER`: NATS HTTPS port number. Default: **8443**
-* `NATS_FILENAME`: Pefix to use for NATS files (e.g., the PID file would be formed using `${NATS_FILENAME}.pid`). Default: **nats-server**
-* `NATS_EXTRA_ARGS`: Additional command line arguments passed while starting NATS (e.g., `-js` for enabling JetStream). No defaults.
-
-#### NATS security configuration
-
-* `NATS_ENABLE_AUTH`: Enable NATS authentication. Default: **no**
-* `NATS_USERNAME`: Username credential for client connections. Default: **nats**
-* `NATS_PASSWORD`: Password credential for client connections. No defaults.
-* `NATS_TOKEN`: Auth token for client connections. No defaults.
-* `NATS_ENABLE_TLS`: Enable TLS. Default: **no**
-* `NATS_TLS_CRT_FILE`: TLS certificate filename. Default: **nats-server.crt**
-* `NATS_TLS_KEY_FILE`: TLS key filename. Default: **nats-server.key**
-
-#### NATS cluster configuration
-
-* `NATS_ENABLE_CLUSTER`: Enable NATS Cluster configuration. Default: **no**
-* `NATS_CLUSTER_USERNAME`: Username credential for route connections. Default: **nats**
-* `NATS_CLUSTER_PASSWORD`: Password credential for route connections. No defaults.
-* `NATS_CLUSTER_TOKEN`: Auth token for route connections. No defaults.
-* `NATS_CLUSTER_ROUTES`: Comma-separated list of NATS routes to solicit and connect. No defaults.
-* `NATS_CLUSTER_SEED_NODE`: NATS node to use as seed server for routes announcement. No defaults.
-
-### Full configuration
-
-The image looks for custom configuration files in the `/bitnami/nats/conf/` directory. Find very simple examples below.
-
-#### Using the Docker Command Line
+To run commands inside this container you can use `docker run`, for example to execute `nats-server -c nats-server.cfg` you can follow the example below:
 
 ```console
-docker run -d --name nats -p 4222:4222 -p 6222:6222 -p 8222:8222 \
-  --volume /path/to/nats-server.conf:/bitnami/nats/conf/nats-server.conf:ro \
-  bitnami/nats:latest
+docker run -d --name nats-server -p 4222:4222 -p 6222:6222 -p 8222:8222 \
+  --volume /path/to/nats-server.conf:/etc/nats-server.conf:ro \
+  bitnami/nats:latest -c /etc/nats-server.conf
 ```
 
-#### Deploying a Docker Compose file
+### Additional documentation
 
-Modify the [`docker-compose.yml`](https://github.com/bitnami/containers/blob/main/bitnami/nats/docker-compose.yml) file present in this repository as follows:
+For additional documentation, please check [NATS documentation](https://docs.nats.io/).
 
-```diff
-...
-services:
-  nats:
-    ...
-+   volumes:
-+     - /path/to/nats-server.conf:/bitnami/nats/conf/nats-server.conf:ro
-```
+## Notable changes
 
-After that, your custom configuration will be taken into account to start the NATS node. Find more information about how to create your own configuration file on this [link](https://nats-io.github.io/docs/nats_server/configuration.html)
+The following subsections describe notable changes.
 
-### Further documentation
+### 2.10.24-debian-12-r3
 
-For further documentation, please check [NATS documentation](https://docs.nats.io/)
-
-## Notable Changes
+- This image revision dramatically reduces the image given it removes the existing OS distribution. Instead, it simply includes the NATS binary on top of a scratch base image.
 
 ### 2.6.4-debian-10-r14
 
-* The configuration logic is now based on Bash scripts in the *rootfs/* folder.
+- The configuration logic is now based on Bash scripts in the *rootfs/* folder.
 
-## Contributing
+### FIPS configuration in Bitnami Secure Images
 
-We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues) or submitting a [pull request](https://github.com/bitnami/containers/pulls) with your contribution.
+The Bitnami NATS Docker image from the [Bitnami Secure Images](https://go-vmware.broadcom.com/contact-us) catalog includes extra features and settings to configure the container with FIPS capabilities. You can configure the next environment variables:
 
-## Issues
-
-If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/containers/issues/new/choose). For us to provide better support, be sure to fill the issue template.
+- `OPENSSL_FIPS`: whether OpenSSL runs in FIPS mode or not. `yes` (default), `no`.
+- `GODEBUG`: controls Go FIPS mode. Use `fips140=only` (restricted), `fips140=on` (relaxed), or `fips140=off` (disabled).
 
 ## License
 
-Copyright &copy; 2023 VMware, Inc.
+Copyright &copy; 2026 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

@@ -1,65 +1,72 @@
-# Node.js packaged by Bitnami
-
-## What is Node.js?
+# Bitnami Secure Image for Node.js
 
 > Node.js is a runtime environment built on V8 JavaScript engine. Its event-driven, non-blocking I/O model enables the development of fast, scalable, and data-intensive server applications.
 
-[Overview of Node.js](http://nodejs.org/)
+[Overview of Node.js](https://nodejs.org/)
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
 
 ```console
-docker run -it --name node bitnami/node
+docker run -it --name node bitnami/node:latest
 ```
 
-### Docker Compose
+## Why use Bitnami Secure Images?
 
-```console
-curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/node/docker-compose.yml > docker-compose.yml
-docker-compose up -d
-```
+Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami Secure Images are based on the cloud-optimized, security-hardened enterprise [OS Photon Linux](https://vmware.github.io/photon/). Why choose BSI images?
 
-## Why use Bitnami Images?
+- Hardened secure images of popular open source software with Near-Zero Vulnerabilities
+- Vulnerability Triage & Prioritization with VEX Statements, KEV and EPSS Scores
+- Compliance focus with FIPS, STIG, and air-gap options, including secure bill of materials (SBOM)
+- Software supply chain provenance attestation through in-toto
+- First class support for the internet’s favorite Helm charts
 
-* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With Bitnami images the latest bug fixes and features are available as soon as possible.
-* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
-* All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
-* All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
-* Bitnami container images are released on a regular basis with the latest distribution packages available.
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
 
-Looking to use Node.js in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
+
+If you are looking for our previous generation of images based on Debian Linux, please see the [Bitnami Legacy registry](https://hub.docker.com/u/bitnamilegacy).
+
+## Choosing between the _Standard_ and _Minimal_ image
+
+This asset is available in two flavors: _Standard_ and _Minimal_; designed to address different use cases and operational needs.
+
+### Standard images
+
+The standard images are full-featured, production-ready containers built on top of secure base operating systems. They include:
+
+- The complete runtime and commonly used system tools.
+- A familiar Linux environment (shell, package manager, debugging utilities).
+- Full compatibility with most CI/CD pipelines and existing workloads.
+
+Recommended for:
+
+- Development and testing environments.
+- Workloads requiring package installation or debugging tools.
+- Applications that depend on system utilities or shared libraries.
+
+### Minimal images
+
+The minimal images are optimized, distroless-style containers derived from a stripped-down base. They only ship what’s strictly necessary to run the application; no shell, package manager, or extra libraries. They provide:
+
+- Smaller size: Faster pull and startup times.
+- Reduced attack surface: Fewer components and potential vulnerabilities.
+- Simpler maintenance: Fewer dependencies to patch or update.
+
+Recommended for:
+
+- Production environments prioritizing performance and security.
+- Regulated or security-sensitive workloads
+- Containers built via multi-stage builds (e.g., Golang static binaries).
 
 ## Supported tags and respective `Dockerfile` links
 
-Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
-
-You can see the equivalence between the different tags by taking a look at the `tags-info.yaml` file present in the branch folder, i.e `bitnami/ASSET/BRANCH/DISTRO/tags-info.yaml`.
-
-Subscribe to project updates by watching the [bitnami/containers GitHub repo](https://github.com/bitnami/containers).
+Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html).
 
 ## Get this image
 
-The recommended way to get the Bitnami Node.js Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/node).
-
-```console
-docker pull bitnami/node:latest
-```
-
-To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/bitnami/node/tags/) in the Docker Hub Registry.
-
-```console
-docker pull bitnami/node:[TAG]
-```
-
-If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
-
-```console
-git clone https://github.com/bitnami/containers.git
-cd bitnami/APP/VERSION/OPERATING-SYSTEM
-docker build -t bitnami/APP:latest .
-```
+The Bitnami Node.js Docker image is only available to [Bitnami Secure Images](https://bitnami.com) customers.
 
 ## Entering the REPL
 
@@ -71,9 +78,11 @@ docker run -it --name node bitnami/node
 
 **Further Reading:**
 
-* [nodejs.org/api/repl.html](https://nodejs.org/api/repl.html)
+- [nodejs.org/api/repl.html](https://nodejs.org/api/repl.html)
 
 ## Configuration
+
+The following section describes how to run commands
 
 ### Running your Node.js script
 
@@ -93,21 +102,16 @@ docker run --rm -v /path/to/app:/app bitnami/node npm install
 docker run -it --name node  -v /path/to/app:/app bitnami/node npm start
 ```
 
-or by modifying the [`docker-compose.yml`](https://github.com/bitnami/containers/blob/main/bitnami/node/docker-compose.yml) file present in this repository:
-
-```yaml
-node:
-  ...
-  command: "sh -c 'npm install && npm start'"
-  volumes:
-    - .:/app
-  ...
-```
-
 **Further Reading:**
 
-* [package.json documentation](https://docs.npmjs.com/files/package.json)
-* [npm start script](https://docs.npmjs.com/misc/scripts#default-values)
+- [package.json documentation](https://docs.npmjs.com/files/package.json)
+- [npm start script](https://docs.npmjs.com/misc/scripts#default-values)
+
+### FIPS configuration in Bitnami Secure Images
+
+The Bitnami Node.js Docker image from the [Bitnami Secure Images](https://go-vmware.broadcom.com/contact-us) catalog includes extra features and settings to configure the container with FIPS capabilities. You can configure the next environment variables:
+
+- `OPENSSL_FIPS`: whether OpenSSL runs in FIPS mode or not. `yes` (default), `no`.
 
 ## Working with private npm modules
 
@@ -115,13 +119,13 @@ To work with npm private modules, it is necessary to be logged into npm. npm CLI
 
 If you are working in a Docker environment, you can inject the token at build time in your Dockerfile by using the ARG parameter as follows:
 
-* Create a `npmrc` file within the project. It contains the instructions for the `npm` command to authenticate against npmjs.org registry. The `NPM_TOKEN` will be taken at build time. The file should look like this:
+- Create a `npmrc` file within the project. It contains the instructions for the `npm` command to authenticate against npmjs.org registry. The `NPM_TOKEN` will be taken at build time. The file should look like this:
 
 ```console
 //registry.npmjs.org/:_authToken=${NPM_TOKEN}
 ```
 
-* Add some new lines to the Dockerfile in order to copy the `npmrc` file, add the expected `NPM_TOKEN` by using the ARG parameter, and remove the `npmrc` file once the npm install is completed.
+- Add some new lines to the Dockerfile in order to copy the `npmrc` file, add the expected `NPM_TOKEN` by using the ARG parameter, and remove the `npmrc` file once the npm install is completed.
 
 You can find the Dockerfile below:
 
@@ -139,7 +143,7 @@ RUN npm install
 CMD node app.js
 ```
 
-* Now you can build the image using the above Dockerfile and the token. Run the `docker build` command as follows:
+- Now you can build the image using the above Dockerfile and the token. Run the `docker build` command as follows:
 
 ```console
 docker build --build-arg NPM_TOKEN=${NPM_TOKEN} .
@@ -151,7 +155,7 @@ Congratulations! You are now logged into the npm repo.
 
 ### Further reading
 
-* [npm official documentation](https://docs.npmjs.com/private-modules/docker-and-private-modules).
+- [npm official documentation](https://docs.npmjs.com/private-modules/docker-and-private-modules).
 
 ## Accessing a Node.js app running a web server
 
@@ -211,16 +215,6 @@ We may want to make our Node.js web server only accessible via an nginx web serv
 docker network create app-tier --driver bridge
 ```
 
-or using Docker Compose:
-
-```yaml
-version: '2'
-
-networks:
-  app-tier:
-    driver: bridge
-```
-
 #### Step 2: Create a virtual host
 
 Let's create an nginx virtual host to reverse proxy to our Node.js container.
@@ -254,19 +248,6 @@ docker run -it --name myapp --network app-tier \
   bitnami/node node index.js
 ```
 
-or using Docker Compose:
-
-```yaml
-version: '2'
-myapp:
-  image: bitnami/node
-  command: node index.js
-  networks:
-    - app-tier
-  volumes:
-    - .:/app
-```
-
 #### Step 4: Run the nginx image
 
 ```console
@@ -276,83 +257,27 @@ docker run -it \
   bitnami/nginx
 ```
 
-or using Docker Compose:
-
-```yaml
-version: '2'
-nginx:
-  image: bitnami/nginx
-  networks:
-    - app-tier
-  volumes:
-    - /path/to/vhost.conf:/bitnami/nginx/conf/vhosts/yourapp.conf:ro
-```
-
-## Maintenance
-
-### Upgrade this image
-
-Bitnami provides up-to-date versions of Node.js, including security patches, soon after they are made upstream. We recommend that you follow these steps to upgrade your container.
-
-#### Step 1: Get the updated image
-
-```console
-docker pull bitnami/node:latest
-```
-
-or if you're using Docker Compose, update the value of the image property to `bitnami/node:latest`.
-
-#### Step 2: Remove the currently running container
-
-```console
-docker rm -v node
-```
-
-or using Docker Compose:
-
-```console
-docker-compose rm -v node
-```
-
-#### Step 3: Run the new image
-
-Re-create your container from the new image.
-
-```console
-docker run --name node bitnami/node:latest
-```
-
-or using Docker Compose:
-
-```console
-docker-compose up node
-```
-
 ## Notable Changes
+
+### Starting January 16, 2024
+
+- The `docker-compose.yaml` file has been removed, as it was solely intended for internal testing purposes.
 
 ### 6.2.0-r0 (2016-05-11)
 
-* Commands are now executed as the `root` user. Use the `--user` argument to switch to another user or change to the required user using `sudo` to launch applications. Alternatively, as of Docker 1.10 User Namespaces are supported by the docker daemon. Refer to the [daemon user namespace options](https://docs.docker.com/engine/security/userns-remap/) for more details.
+- Commands are now executed as the `root` user. Use the `--user` argument to switch to another user or change to the required user using `sudo` to launch applications. Alternatively, as of Docker 1.10 User Namespaces are supported by the docker daemon. Refer to the [daemon user namespace options](https://docs.docker.com/engine/security/userns-remap/) for more details.
 
 ### 4.1.2-0 (2015-10-12)
 
-* Permissions fixed so `bitnami` user can install global npm modules without needing `sudo`.
+- Permissions fixed so `bitnami` user can install global npm modules without needing `sudo`.
 
 ### 4.1.1-0-r01 (2015-10-07)
 
-* `/app` directory is no longer exported as a volume. This caused problems when building on top of the image, since changes in the volume are not persisted between Dockerfile `RUN` instructions. To keep the previous behavior (so that you can mount the volume in another container), create the container with the `-v /app` option.
-
-## Contributing
-
-We'd love for you to contribute to this Docker image. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues) or submitting a [pull request](https://github.com/bitnami/containers/pulls) with your contribution.
-
-## Issues
-
-If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/containers/issues/new/choose). For us to provide better support, be sure to fill the issue template.
+- `/app` directory is no longer exported as a volume. This caused problems when building on top of the image, since changes in the volume are not persisted between Dockerfile `RUN` instructions. To keep the previous behavior (so that you can mount the volume in another container), create the container with the `-v /app` option.
 
 ## License
 
-Copyright &copy; 2023 VMware, Inc.
+Copyright &copy; 2026 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

@@ -1,6 +1,4 @@
-# Python packaged by Bitnami
-
-## What is Python?
+# Bitnami Secure Image for Python
 
 > Python is a programming language that lets you work quickly and integrate systems more effectively.
 
@@ -13,31 +11,64 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 docker run -it --name python bitnami/python
 ```
 
-### Docker Compose
+## Using `docker-compose.yml`
 
-```console
-curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/python/docker-compose.yml > docker-compose.yml
-docker-compose up -d
-```
+The docker-compose.yaml file of this container can be found in the [Bitnami Containers repository](https://github.com/bitnami/containers/).
 
-## Why use Bitnami Images?
+[https://github.com/bitnami/containers/tree/main/bitnami/python/docker-compose.yml](https://github.com/bitnami/containers/tree/main/bitnami/python/docker-compose.yml)
 
-* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With Bitnami images the latest bug fixes and features are available as soon as possible.
-* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
-* All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
-* All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
-* Bitnami container images are released on a regular basis with the latest distribution packages available.
+## Why use Bitnami Secure Images?
 
-Looking to use Python in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
+Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami Secure Images are based on the cloud-optimized, security-hardened enterprise [OS Photon Linux](https://vmware.github.io/photon/). Why choose BSI images?
+
+- Hardened secure images of popular open source software with Near-Zero Vulnerabilities
+- Vulnerability Triage & Prioritization with VEX Statements, KEV and EPSS Scores
+- Compliance focus with FIPS, STIG, and air-gap options, including secure bill of materials (SBOM)
+- Software supply chain provenance attestation through in-toto
+- First class support for the internet’s favorite Helm charts
+
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
+
+If you are looking for our previous generation of images based on Debian Linux, please see the [Bitnami Legacy registry](https://hub.docker.com/u/bitnamilegacy).
+
+## Choosing between the _Standard_ and _Minimal_ image
+
+This asset is available in two flavors: _Standard_ and _Minimal_; designed to address different use cases and operational needs.
+
+### Standard images
+
+The standard images are full-featured, production-ready containers built on top of secure base operating systems. They include:
+
+- The complete runtime and commonly used system tools.
+- A familiar Linux environment (shell, package manager, debugging utilities).
+- Full compatibility with most CI/CD pipelines and existing workloads.
+
+Recommended for:
+
+- Development and testing environments.
+- Workloads requiring package installation or debugging tools.
+- Applications that depend on system utilities or shared libraries.
+
+### Minimal images
+
+The minimal images are optimized, distroless-style containers derived from a stripped-down base. They only ship what’s strictly necessary to run the application; no shell, package manager, or extra libraries. They provide:
+
+- Smaller size: Faster pull and startup times.
+- Reduced attack surface: Fewer components and potential vulnerabilities.
+- Simpler maintenance: Fewer dependencies to patch or update.
+
+Recommended for:
+
+- Production environments prioritizing performance and security.
+- Regulated or security-sensitive workloads
+- Containers built via multi-stage builds (e.g., Golang static binaries).
 
 ## Supported tags and respective `Dockerfile` links
 
-Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
-
-You can see the equivalence between the different tags by taking a look at the `tags-info.yaml` file present in the branch folder, i.e `bitnami/ASSET/BRANCH/DISTRO/tags-info.yaml`.
-
-Subscribe to project updates by watching the [bitnami/containers GitHub repo](https://github.com/bitnami/containers).
+Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html).
 
 ### Deprecation Note (2022-01-21)
 
@@ -47,31 +78,13 @@ The `prod` tags has been removed; from now on just the regular container images 
 
 The formatting convention for `prod` tags has been changed:
 
-* `BRANCH-debian-10-prod` is now tagged as `BRANCH-prod-debian-10`
-* `VERSION-debian-10-rX-prod` is now tagged as `VERSION-prod-debian-10-rX`
-* `latest-prod` is now deprecated
+- `BRANCH-debian-10-prod` is now tagged as `BRANCH-prod-debian-10`
+- `VERSION-debian-10-rX-prod` is now tagged as `VERSION-prod-debian-10-rX`
+- `latest-prod` is now deprecated
 
 ## Get this image
 
-The recommended way to get the Bitnami Python Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/python).
-
-```console
-docker pull bitnami/python:latest
-```
-
-To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/bitnami/python/tags/) in the Docker Hub Registry.
-
-```console
-docker pull bitnami/python:[TAG]
-```
-
-If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
-
-```console
-git clone https://github.com/bitnami/containers.git
-cd bitnami/APP/VERSION/OPERATING-SYSTEM
-docker build -t bitnami/APP:latest .
-```
+The Bitnami Python Docker image is only available to [Bitnami Secure Images](https://bitnami.com) customers.
 
 ## Entering the REPL
 
@@ -82,6 +95,8 @@ docker run -it --name python bitnami/python
 ```
 
 ## Configuration
+
+The following section describes how to run commands
 
 ### Running your Python script
 
@@ -113,60 +128,18 @@ python:
 
 **Further Reading:**
 
-* [python documentation](https://www.python.org/doc/)
-* [pip documentation](https://pip.pypa.io/en/stable/)
+- [python documentation](https://www.python.org/doc/)
+- [pip documentation](https://pip.pypa.io/en/stable/)
 
-## Maintenance
+### FIPS configuration in Bitnami Secure Images
 
-### Upgrade this image
+The Bitnami Python Docker image from the [Bitnami Secure Images](https://go-vmware.broadcom.com/contact-us) catalog includes extra features and settings to configure the container with FIPS capabilities. You can configure the next environment variables:
 
-Bitnami provides up-to-date versions of Python, including security patches, soon after they are made upstream. We recommend that you follow these steps to upgrade your container.
-
-#### Step 1: Get the updated image
-
-```console
-docker pull bitnami/python:latest
-```
-
-or if you're using Docker Compose, update the value of the image property to `bitnami/python:latest`.
-
-#### Step 2: Remove the currently running container
-
-```console
-docker rm -v python
-```
-
-or using Docker Compose:
-
-```console
-docker-compose rm -v python
-```
-
-#### Step 3: Run the new image
-
-Re-create your container from the new image.
-
-```console
-docker run --name python bitnami/python:latest
-```
-
-or using Docker Compose:
-
-```console
-docker-compose up python
-```
-
-## Contributing
-
-We'd love for you to contribute to this Docker image. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues) or submitting a [pull request](https://github.com/bitnami/containers/pulls) with your contribution.
-
-## Issues
-
-If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/containers/issues/new/choose). For us to provide better support, be sure to fill the issue template.
+- `OPENSSL_FIPS`: whether OpenSSL runs in FIPS mode or not. `yes` (default), `no`.
 
 ## License
 
-Copyright &copy; 2023 VMware, Inc.
+Copyright &copy; 2026 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

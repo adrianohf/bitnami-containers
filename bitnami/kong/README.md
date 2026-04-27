@@ -1,6 +1,4 @@
-# Kong packaged by Bitnami
-
-## What is Kong?
+# Bitnami Secure Image for Kong
 
 > Kong is an open source Microservice API gateway and platform designed for managing microservices requests of high-availability, fault-tolerance, and distributed systems.
 
@@ -13,57 +11,42 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 docker run --name kong bitnami/kong:latest
 ```
 
-### Docker Compose
+## Using `docker-compose.yml`
 
-```console
-curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/kong/docker-compose.yml > docker-compose.yml
-docker-compose up -d
-```
+The docker-compose.yaml file of this container can be found in the [Bitnami Containers repository](https://github.com/bitnami/containers/).
 
-## Why use Bitnami Images?
+[https://github.com/bitnami/containers/tree/main/bitnami/kong/docker-compose.yml](https://github.com/bitnami/containers/tree/main/bitnami/kong/docker-compose.yml)
 
-* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With Bitnami images the latest bug fixes and features are available as soon as possible.
-* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
-* All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
-* All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
-* Bitnami container images are released on a regular basis with the latest distribution packages available.
+Please be aware this file has not undergone internal testing. Consequently, we advise its use exclusively for development or testing purposes. For production-ready deployments, we highly recommend utilizing its associated [Bitnami Helm chart](https://github.com/bitnami/charts/tree/main/bitnami/kong).
 
-Looking to use Kong in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
+## Why use Bitnami Secure Images?
+
+Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami Secure Images are based on the cloud-optimized, security-hardened enterprise [OS Photon Linux](https://vmware.github.io/photon/). Why choose BSI images?
+
+- Hardened secure images of popular open source software with Near-Zero Vulnerabilities
+- Vulnerability Triage & Prioritization with VEX Statements, KEV and EPSS Scores
+- Compliance focus with FIPS, STIG, and air-gap options, including secure bill of materials (SBOM)
+- Software supply chain provenance attestation through in-toto
+- First class support for the internet’s favorite Helm charts
+
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
+
+If you are looking for our previous generation of images based on Debian Linux, please see the [Bitnami Legacy registry](https://hub.docker.com/u/bitnamilegacy).
 
 ## Why use a non-root container?
 
-Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://docs.bitnami.com/tutorials/work-with-non-root-containers/).
+Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-work-with-non-root-containers-index.html).
 
 ## Supported tags and respective `Dockerfile` links
 
-Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
-
-You can see the equivalence between the different tags by taking a look at the `tags-info.yaml` file present in the branch folder, i.e `bitnami/ASSET/BRANCH/DISTRO/tags-info.yaml`.
-
-Subscribe to project updates by watching the [bitnami/containers GitHub repo](https://github.com/bitnami/containers).
+Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html).
 
 ## Get this image
 
-The recommended way to get the Bitnami Kong Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/kong).
-
-```console
-docker pull bitnami/kong:latest
-```
-
-To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/bitnami/kong/tags/) in the Docker Hub Registry.
-
-```console
-docker pull bitnami/kong:[TAG]
-```
-
-If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
-
-```console
-git clone https://github.com/bitnami/containers.git
-cd bitnami/APP/VERSION/OPERATING-SYSTEM
-docker build -t bitnami/APP:latest .
-```
+The Bitnami Kong Docker image is only available to [Bitnami Secure Images](https://bitnami.com) customers.
 
 ## Connecting to other containers
 
@@ -93,21 +76,53 @@ We can launch another containers using the same flag (`--network NETWORK`) in th
 
 ## Configuration
 
-The Bitnami Docker Kong can be easily setup with the following environment variables:
+The following section describes the supported environment variables
 
-* `KONG_PROXY_LISTEN_ADDRESS`: Address to which Kong Proxy service is bound to. Default: **0.0.0.0**
-* `KONG_PROXY_HTTP_PORT_NUMBER`: The port Kong Proxy is listening for HTTP requests. Default: **8000**
-* `KONG_PROXY_HTTPS_PORT_NUMBER`: The port Kong Proxy is listening for HTTPS requests. Default: **8443**
-* `KONG_ADMIN_LISTEN_ADDRESS`: Address to which Kong Admin service is bound to. Default: **127.0.0.1**
-* `KONG_ADMIN_HTTP_PORT_NUMBER`: The port Kong Admin is listening for HTTP requests. Default: **8001**
-* `KONG_ADMIN_HTTPS_PORT_NUMBER`: The port Kong Admin is listening for HTTPS requests. Default: **8444**
-* `KONG_MIGRATE`: Whether to automatically run Kong migration scripts on this node. In a cluster, only one node should have this flag enabled. Default: **no**
-* `KONG_EXIT_AFTER_MIGRATE`: Whether to exit after performing the migration (it will not launch the Kong daemon). This is useful using the container in Jobs and Cron Jobs. Default: **no**
+### Environment variables
 
-This container also supports configuring Kong via environment values starting with `KONG_`. For instance, by setting the `KONG_LOG_LEVEL` environment variable, Kong will take into account this value rather than the property set in `kong.conf`. It is recommended to set the following environment variables:
+The following tables list the main variables you can set.
 
-* `KONG_DATABASE`: Database type used. Valid values: **postgres** or **off**. Default: **postgres**
-* For PostgreSQL database: `KONG_PG_HOST`, `KONG_PG_PORT`, `KONG_PG_TIMEOUT`, `KONG_PG_USER`, `KONG_PG_PASSWORD`.
+#### Customizable environment variables
+
+| Name                           | Description                                        | Default Value                                                                                                                   |
+|--------------------------------|----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| `KONG_MIGRATE`                 | Perform Kong database migration.                   | `no`                                                                                                                            |
+| `KONG_EXIT_AFTER_MIGRATE`      | Exit Kong after performing the database migration. | `no`                                                                                                                            |
+| `KONG_PROXY_LISTEN_ADDRESS`    | Listen address for Kong proxy daemon.              | `0.0.0.0`                                                                                                                       |
+| `KONG_PROXY_HTTP_PORT_NUMBER`  | HTTP port of the Kong proxy daemon.                | `8000`                                                                                                                          |
+| `KONG_PROXY_HTTPS_PORT_NUMBER` | HTTPS port of the Kong proxy daemon.               | `8443`                                                                                                                          |
+| `KONG_ADMIN_LISTEN_ADDRESS`    | Listen address for Kong admin daemon.              | `0.0.0.0`                                                                                                                       |
+| `KONG_ADMIN_HTTP_PORT_NUMBER`  | HTTP port of the Kong admin daemon.                | `8001`                                                                                                                          |
+| `KONG_ADMIN_HTTPS_PORT_NUMBER` | HTTPS port of the Kong admin daemon.               | `8444`                                                                                                                          |
+| `KONG_NGINX_DAEMON`            | Set silent log streams for the nginx daemon.       | `off`                                                                                                                           |
+| `KONG_PROXY_LISTEN`            | Kong proxy listen address.                         | `${KONG_PROXY_LISTEN_ADDRESS}:${KONG_PROXY_HTTP_PORT_NUMBER}, ${KONG_PROXY_LISTEN_ADDRESS}:${KONG_PROXY_HTTPS_PORT_NUMBER} ssl` |
+| `KONG_PROXY_LISTEN_OVERRIDE`   | Override proxy listen.                             | `no`                                                                                                                            |
+| `KONG_ADMIN_LISTEN`            | Kong admin listen address.                         | `${KONG_ADMIN_LISTEN_ADDRESS}:${KONG_ADMIN_HTTP_PORT_NUMBER}, ${KONG_ADMIN_LISTEN_ADDRESS}:${KONG_ADMIN_HTTPS_PORT_NUMBER} ssl` |
+| `KONG_ADMIN_LISTEN_OVERRIDE`   | Override admin listen.                             | `no`                                                                                                                            |
+| `KONG_DATABASE`                | Select database for Kong.                          | `postgres`                                                                                                                      |
+| `KONG_PG_PASSWORD`             | PostgreSQL password for Kong.                      | `nil`                                                                                                                           |
+
+#### Read-only environment variables
+
+| Name                      | Description                                           | Value                                |
+|---------------------------|-------------------------------------------------------|--------------------------------------|
+| `KONG_BASE_DIR`           | Kong installation directory.                          | `${BITNAMI_ROOT_DIR}/kong`           |
+| `KONG_CONF_DIR`           | Kong configuration directory.                         | `${KONG_BASE_DIR}/conf`              |
+| `KONG_DEFAULT_CONF_DIR`   | Kong configuration directory.                         | `${KONG_BASE_DIR}/conf.default`      |
+| `KONG_CONF_FILE`          | Kong configuration file.                              | `${KONG_CONF_DIR}/kong.conf`         |
+| `KONG_DEFAULT_CONF_FILE`  | Kong default configuration file.                      | `${KONG_CONF_DIR}/kong.conf.default` |
+| `KONG_INITSCRIPTS_DIR`    | Kong directory for init scripts.                      | `/docker-entrypoint-initdb.d`        |
+| `KONG_SERVER_DIR`         | Directory where Kong Openresty instance is created.   | `${KONG_BASE_DIR}/server`            |
+| `KONG_PREFIX`             | Kong installation directory.                          | `${KONG_SERVER_DIR}`                 |
+| `KONG_DEFAULT_SERVER_DIR` | Directory with default Kong Openresty instance files. | `${KONG_BASE_DIR}/server.default`    |
+| `KONG_LOGS_DIR`           | Directory where Kong logs are stored.                 | `${KONG_SERVER_DIR}/logs`            |
+| `KONG_DAEMON_USER`        | Kong system user.                                     | `kong`                               |
+| `KONG_DAEMON_GROUP`       | Kong system group.                                    | `kong`                               |
+
+Additionally, this container also supports configuring Kong via environment values starting with `KONG_`. For instance, by setting the `KONG_LOG_LEVEL` environment variable, Kong will take into account this value rather than the property set in `kong.conf`. It is recommended to set the following environment variables:
+
+- `KONG_DATABASE`: Database type used. Valid values: **postgres** or **off**. Default: **postgres**
+- For PostgreSQL database: `KONG_PG_HOST`, `KONG_PG_PORT`, `KONG_PG_TIMEOUT`, `KONG_PG_USER`, `KONG_PG_PASSWORD`.
 
 Check the official [Kong Configuration Reference](https://docs.konghq.com/latest/configuration/#environment-variables) for the full list of configurable properties.
 
@@ -129,10 +144,10 @@ version: '2'
 
 services:
   kong:
-    image: 'bitnami/kong:latest'
+    image: bitnami/kong:latest
     ports:
-      - '8000:8000'
-      - '8443:8443'
+      - 8000:8000
+      - 8443:8443
     environment:
       # Assume we don't want data persistence for simplicity purposes
       - KONG_DATABASE=off
@@ -140,15 +155,15 @@ services:
       - /path/to/kong.conf:/opt/bitnami/kong/conf/kong.conf
 ```
 
+### FIPS configuration in Bitnami Secure Images
+
+The Bitnami Kong Docker image from the [Bitnami Secure Images](https://go-vmware.broadcom.com/contact-us) catalog includes extra features and settings to configure the container with FIPS capabilities. You can configure the next environment variables:
+
+- `OPENSSL_FIPS`: whether OpenSSL runs in FIPS mode or not. `yes` (default), `no`.
+
 ## Logging
 
-The Bitnami Kong Docker image sends the container logs to `stdout`. To view the logs:
-
-```console
-docker logs kong
-```
-
-You can configure the containers [logging driver](https://docs.docker.com/engine/admin/logging/overview/) using the `--log-driver` option if you wish to consume the container logs differently. In the default configuration docker uses the `json-file` driver.
+The Bitnami Kong Docker image sends the container logs to the `stdout`. You can configure the containers [logging driver](https://docs.docker.com/engine/admin/logging/overview/) using the `--log-driver` option if you wish to consume the container logs differently. In the default configuration docker uses the `json-file` driver.
 
 ## Customize this image
 
@@ -158,8 +173,8 @@ The Bitnami Kong Docker image is designed to be extended so it can be used as th
 
 Before extending this image, please note it is possible there are certain ways you can configure Kong using the original:
 
-* [Configuring Kong via environment variables](#configuration).
-* [Changing the 'kong.conf' file](#full-configuration).
+- [Configuring Kong via environment variables](#configuration).
+- [Changing the 'kong.conf' file](#full-configuration).
 
 If your desired customizations cannot be covered using the methods mentioned above, extend the image. To do so, create your own image using a Dockerfile with the format below:
 
@@ -171,10 +186,10 @@ FROM bitnami/kong
 
 Here is an example of extending the image with the following modifications:
 
-* Install the `vim` editor
-* Modify the Kong configuration file
-* Modify the ports used by Kong
-* Change the user that runs the container
+- Install the `vim` editor
+- Modify the Kong configuration file
+- Modify the ports used by Kong
+- Change the user that runs the container
 
 ```Dockerfile
 FROM bitnami/kong
@@ -202,8 +217,8 @@ USER 1002
 
 Based on the extended image, you can use a Docker Compose file like the one below to add other features:
 
-* Configure Kong via environment variables
-* Override the entire `kong.conf` configuration file
+- Configure Kong via environment variables
+- Override the entire `kong.conf` configuration file
 
 ```yaml
 version: '2'
@@ -211,8 +226,8 @@ services:
   kong:
     build: .
     ports:
-      - '80:8080'
-      - '443:8443'
+      - 80:8080
+      - 443:8443
     volumes:
       - ./config/kong.conf:/opt/bitnami/kong/conf/kong.conf
     environment:
@@ -223,51 +238,9 @@ volumes:
     driver: local
 ```
 
-## Maintenance
-
-### Upgrade this image
-
-Bitnami provides up-to-date versions of Kong, including security patches, soon after they are made upstream. We recommend that you follow these steps to upgrade your container.
-
-#### Step 1: Get the updated image
-
-```console
-docker pull bitnami/kong:latest
-```
-
-#### Step 2: Stop the running container
-
-Stop the currently running container using the command
-
-```console
-docker stop kong
-```
-
-#### Step 3: Remove the currently running container
-
-```console
-docker rm -v kong
-```
-
-#### Step 4: Run the new image
-
-Re-create your container from the new image.
-
-```console
-docker run --name kong bitnami/kong:latest
-```
-
-## Contributing
-
-We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues) or submitting a [pull request](https://github.com/bitnami/containers/pulls) with your contribution.
-
-## Issues
-
-If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/containers/issues/new/choose). For us to provide better support, be sure to fill the issue template.
-
 ## License
 
-Copyright &copy; 2023 VMware, Inc.
+Copyright &copy; 2026 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

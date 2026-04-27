@@ -1,6 +1,4 @@
-# Grafana Image Renderer packaged by Bitnami
-
-## What is Grafana Image Renderer?
+# Bitnami Secure Image for Grafana Image Renderer
 
 > The Grafana Image Renderer is a plugin for Grafana that uses headless Chrome to render panels and dashboards as PNG images.
 
@@ -13,56 +11,38 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 docker run --name grafana-image-renderer bitnami/grafana-image-renderer:latest
 ```
 
-## Why use Bitnami Images?
+## Why use Bitnami Secure Images?
 
-* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With Bitnami images the latest bug fixes and features are available as soon as possible.
-* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
-* All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
-* All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
-* Bitnami container images are released on a regular basis with the latest distribution packages available.
+Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami Secure Images are based on the cloud-optimized, security-hardened enterprise [OS Photon Linux](https://vmware.github.io/photon/). Why choose BSI images?
 
-Looking to use Grafana Image Renderer in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
+- Hardened secure images of popular open source software with Near-Zero Vulnerabilities
+- Vulnerability Triage & Prioritization with VEX Statements, KEV and EPSS Scores
+- Compliance focus with FIPS, STIG, and air-gap options, including secure bill of materials (SBOM)
+- Software supply chain provenance attestation through in-toto
+- First class support for the internet’s favorite Helm charts
+
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
+
+If you are looking for our previous generation of images based on Debian Linux, please see the [Bitnami Legacy registry](https://hub.docker.com/u/bitnamilegacy).
 
 ## How to deploy Grafana Image Renderer in Kubernetes?
 
 Deploying Bitnami applications as Helm Charts is the easiest way to get started with our applications on Kubernetes. Read more about the installation in the [Bitnami Grafana Chart GitHub repository](https://github.com/bitnami/charts/tree/master/bitnami/grafana).
 
-Bitnami containers can be used with [Kubeapps](https://kubeapps.dev/) for deployment and management of Helm Charts in clusters.
-
 ## Why use a non-root container?
 
-Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://docs.bitnami.com/tutorials/work-with-non-root-containers/).
+Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-work-with-non-root-containers-index.html).
 
 ## Supported tags and respective `Dockerfile` links
 
-Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
-
-You can see the equivalence between the different tags by taking a look at the `tags-info.yaml` file present in the branch folder, i.e `bitnami/ASSET/BRANCH/DISTRO/tags-info.yaml`.
-
-Subscribe to project updates by watching the [bitnami/containers GitHub repo](https://github.com/bitnami/containers).
+Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html).
 
 ## Get this image
 
-The recommended way to get the Bitnami Grafana Image Renderer Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/grafana-image-renderer).
-
-```console
-docker pull bitnami/grafana-image-renderer:latest
-```
-
-To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/bitnami/grafana-image-renderer/tags/) in the Docker Hub Registry.
-
-```console
-docker pull bitnami/grafana-image-renderer:[TAG]
-```
-
-If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
-
-```console
-git clone https://github.com/bitnami/containers.git
-cd bitnami/APP/VERSION/OPERATING-SYSTEM
-docker build -t bitnami/APP:latest .
-```
+The Bitnami Grafana Image Renderer Docker image is only available to [Bitnami Secure Images](https://bitnami.com) customers.
 
 ## Connecting to other containers
 
@@ -108,105 +88,52 @@ docker run -d --name grafana \
 
 You can customize Grafana Image Renderer settings by replacing the default configuration file with your custom configuration, or using environment variables.
 
-### Configuration file
+### Environment variables
 
-The image looks for a `config.json` file in `/opt/bitnami/grafana-image-renderer/conf/`. You can mount a volume at `/opt/bitnami/grafana-image-renderer/conf/` and copy/edit the `config.json` file in the `/path/to/grafana-image-renderer-conf/` path. The default configurations will be populated to the `conf/` directory if it's empty.
+The following tables list the main variables you can set.
 
-```console
-/path/to/grafana-image-renderer-conf/
-└── config.json
+#### Customizable environment variables
 
-0 directories, 1 file
-```
+| Name                                    | Description                           | Default Value |
+|-----------------------------------------|---------------------------------------|---------------|
+| `GRAFANA_IMAGE_RENDERER_LISTEN_ADDRESS` | Grafana Image Renderer listen address | `127.0.0.1`   |
+| `GRAFANA_IMAGE_RENDERER_PORT_NUMBER`    | Grafana Image Renderer port number    | `8080`        |
 
-#### Step 1: Run the Grafana Image Renderer container
+#### Read-only environment variables
 
-Run the Grafana Image Renderer container, mounting a directory from your host. Using Docker Compose:
+| Name                                  | Description                                                  | Value                                             |
+|---------------------------------------|--------------------------------------------------------------|---------------------------------------------------|
+| `GRAFANA_IMAGE_RENDERER_BASE_DIR`     | Path to the Grafana Image Renderer installation directory    | `${BITNAMI_ROOT_DIR}/grafana-image-renderer`      |
+| `GRAFANA_IMAGE_RENDERER_TMP_DIR`      | Grafana Image Renderer directory for temporary runtime files | `${GRAFANA_IMAGE_RENDERER_BASE_DIR}/tmp`          |
+| `GRAFANA_IMAGE_RENDERER_LOGS_DIR`     | Grafana Image Renderer directory for log files               | `${GRAFANA_IMAGE_RENDERER_BASE_DIR}/logs`         |
+| `GRAFANA_IMAGE_RENDERER_PID_FILE`     | Grafana Image Renderer PID file                              | `${GRAFANA_IMAGE_RENDERER_TMP_DIR}/renderer.pid`  |
+| `GRAFANA_IMAGE_RENDERER_LOG_FILE`     | Grafana Image Renderer log file                              | `${GRAFANA_IMAGE_RENDERER_LOGS_DIR}/renderer.log` |
+| `GRAFANA_IMAGE_RENDERER_DAEMON_USER`  | Grafana system user.                                         | `grafana-image-renderer`                          |
+| `GRAFANA_IMAGE_RENDERER_DAEMON_GROUP` | Grafana system group.                                        | `grafana-image-renderer`                          |
 
-```diff
-     image: bitnami/grafana-image-renderer:1
-     ports:
-       - 8080:8080
-+    volumes:
-+      - /path/to/grafana-image-renderer-conf/:/opt/bitnami/grafana-image-renderer/conf/
-     environment:
-       HTTP_PORT: "8080"
-       HTTP_HOST: "0.0.0.0"
-```
+### FIPS configuration in Bitnami Secure Images
 
-#### Step 2: Edit the configuration
+The Bitnami Grafana Image Renderer Docker image from the [Bitnami Secure Images](https://go-vmware.broadcom.com/contact-us) catalog includes extra features and settings to configure the container with FIPS capabilities. You can configure the next environment variables:
 
-Edit the configuration on your host using your favorite editor.
-
-```console
-vi /path/to/grafana-image-renderer-conf/config.json
-```
-
-#### Step 3: Restart Grafana Image Renderer
-
-After changing the configuration, restart your Grafana Image Renderer container for changes to take effect. Using Docker Compose:
-
-```console
-docker-compose restart grafana-image-renderer
-```
-
-After that, your configuration will be taken into account in the server's behaviour.
+- `OPENSSL_FIPS`: whether OpenSSL runs in FIPS mode or not. `yes` (default), `no`.
 
 ## Logging
 
-The Bitnami Grafana Image Renderer Docker image sends the container logs to the `stdout`. To view the logs:
+The Bitnami Grafana Image Renderer Docker image sends the container logs to the `stdout`. You can configure the containers [logging driver](https://docs.docker.com/engine/admin/logging/overview/) using the `--log-driver` option if you wish to consume the container logs differently. In the default configuration docker uses the `json-file` driver.
 
-```console
-docker logs grafana-image-renderer
-```
+## Notable Changes
 
-You can configure the containers [logging driver](https://docs.docker.com/engine/admin/logging/overview/) using the `--log-driver` option if you wish to consume the container logs differently. In the default configuration docker uses the `json-file` driver.
+### 5.0.3-debian-12-r0
 
-## Maintenance
+The entire service has been rewritten in Go, replacing the previous Node.js implementation. This new version no longer uses the `config.json` file for configuration. More detailed context can be found on [the upstream PR](https://github.com/grafana/grafana-image-renderer/pull/818).
 
-### Upgrade this image
+### Starting January 16, 2024
 
-Bitnami provides up-to-date versions of Grafana Image Renderer, including security patches, soon after they are made upstream. We recommend that you follow these steps to upgrade your container.
-
-#### Step 1: Get the updated image
-
-```console
-docker pull bitnami/grafana-image-renderer:latest
-```
-
-#### Step 2: Stop the currently running container
-
-Stop the currently running container using the command
-
-```console
-docker stop grafana-image-renderer
-```
-
-#### Step 3: Remove the currently running container
-
-```console
-docker rm -v grafana-image-renderer
-```
-
-#### Step 4: Run the new image
-
-Re-create your container from the new image:
-
-```console
-docker run --name grafana-image-renderer bitnami/grafana-image-renderer:latest
-```
-
-## Contributing
-
-We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues) or submitting a [pull request](https://github.com/bitnami/containers/pulls) with your contribution.
-
-## Issues
-
-If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/containers/issues/new/choose). For us to provide better support, be sure to fill the issue template.
+- The `docker-compose.yaml` file has been removed, as it was solely intended for internal testing purposes.
 
 ## License
 
-Copyright &copy; 2023 VMware, Inc.
+Copyright &copy; 2026 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

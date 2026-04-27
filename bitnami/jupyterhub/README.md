@@ -1,6 +1,4 @@
-# JupyterHub packaged by Bitnami
-
-## What is JupyterHub?
+# Bitnami Secure Image for JupyterHub
 
 > JupyterHub brings the power of notebooks to groups of users. It gives users access to computational environments and resources without burdening the users with installation and maintenance tasks.
 
@@ -9,54 +7,77 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 
 ## TL;DR
 
-This image is meant to run in a Kubernetes cluster.
+```console
+docker run --name jupyterhub bitnami/jupyterhub:latest
+```
 
-## Why use Bitnami Images?
+## Why use Bitnami Secure Images?
 
-* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With Bitnami images the latest bug fixes and features are available as soon as possible.
-* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
-* All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
-* All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
-* Bitnami container images are released on a regular basis with the latest distribution packages available.
+Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami Secure Images are based on the cloud-optimized, security-hardened enterprise [OS Photon Linux](https://vmware.github.io/photon/). Why choose BSI images?
 
-Looking to use JupyterHub in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
+- Hardened secure images of popular open source software with Near-Zero Vulnerabilities
+- Vulnerability Triage & Prioritization with VEX Statements, KEV and EPSS Scores
+- Compliance focus with FIPS, STIG, and air-gap options, including secure bill of materials (SBOM)
+- Software supply chain provenance attestation through in-toto
+- First class support for the internet’s favorite Helm charts
+
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
+
+If you are looking for our previous generation of images based on Debian Linux, please see the [Bitnami Legacy registry](https://hub.docker.com/u/bitnamilegacy).
 
 ## Supported tags and respective `Dockerfile` links
 
-Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
-
-You can see the equivalence between the different tags by taking a look at the `tags-info.yaml` file present in the branch folder, i.e `bitnami/ASSET/BRANCH/DISTRO/tags-info.yaml`.
-
-Subscribe to project updates by watching the [bitnami/containers GitHub repo](https://github.com/bitnami/containers).
+Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html).
 
 ## Get this image
 
-The recommended way to get the Bitnami jupyterhub Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/jupyterhub).
-
-```console
-docker pull bitnami/jupyterhub:latest
-```
-
-To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/bitnami/jupyterhub/tags/) in the Docker Hub Registry.
-
-```console
-docker pull bitnami/jupyterhub:[TAG]
-```
-
-If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
-
-```console
-git clone https://github.com/bitnami/containers.git
-cd bitnami/APP/VERSION/OPERATING-SYSTEM
-docker build -t bitnami/APP:latest .
-```
+The Bitnami JupyterHub Docker image is only available to [Bitnami Secure Images](https://bitnami.com) customers.
 
 ## Why use a non-root container?
 
-Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://docs.bitnami.com/tutorials/work-with-non-root-containers/).
+Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-work-with-non-root-containers-index.html).
 
 ## Configuration
+
+The following sections describe environment variables and how to run commands.
+
+### Environment variables
+
+The following tables list the main variables you can set.
+
+#### Customizable environment variables
+
+| Name                              | Description                   | Default Value        |
+|-----------------------------------|-------------------------------|----------------------|
+| `JUPYTERHUB_USERNAME`             | JupyterHub admin username.    | `user`               |
+| `JUPYTERHUB_PASSWORD`             | JupyterHub admin password.    | `bitnami`            |
+| `JUPYTERHUB_PROXY_PORT_NUMBER`    | JupyterHub proxy port number. | `8000`               |
+| `JUPYTERHUB_DATABASE_TYPE`        | Database server type.         | `postgresql`         |
+| `JUPYTERHUB_DATABASE_HOST`        | Database server host.         | `127.0.0.1`          |
+| `JUPYTERHUB_DATABASE_PORT_NUMBER` | Database server port.         | `5432`               |
+| `JUPYTERHUB_DATABASE_NAME`        | Database name.                | `bitnami_jupyterhub` |
+| `JUPYTERHUB_DATABASE_USER`        | Database user name.           | `bn_jupyterhub`      |
+| `JUPYTERHUB_DATABASE_PASSWORD`    | Database user password.       | `nil`                |
+
+#### Read-only environment variables
+
+| Name                        | Description                                  | Value                                             |
+|-----------------------------|----------------------------------------------|---------------------------------------------------|
+| `JUPYTERHUB_BASE_DIR`       | JupyterHub installation directory.           | `${BITNAMI_ROOT_DIR}/jupyterhub`                  |
+| `JUPYTERHUB_BIN_DIR`        | JupyterHub directory for binary executables. | `${BITNAMI_ROOT_DIR}/miniforge/bin`               |
+| `JUPYTERHUB_PROXY_BIN_DIR`  | JupyterHub directory for binary executables. | `${BITNAMI_ROOT_DIR}/configurable-http-proxy/bin` |
+| `JUPYTERHUB_CONF_DIR`       | JupyterHub configuration directory.          | `${JUPYTERHUB_BASE_DIR}/etc`                      |
+| `JUPYTERHUB_CONF_FILE`      | JupyterHub configuration file.               | `${JUPYTERHUB_CONF_DIR}/jupyterhub_config.py`     |
+| `JUPYTERHUB_LOGS_DIR`       | JupyterHub logs directory.                   | `${JUPYTERHUB_BASE_DIR}/logs`                     |
+| `JUPYTERHUB_LOG_FILE`       | JupyterHub log file.                         | `${JUPYTERHUB_LOGS_DIR}/jupyterhub.log`           |
+| `JUPYTERHUB_TMP_DIR`        | JupyterHub temporary directory.              | `${JUPYTERHUB_BASE_DIR}/tmp`                      |
+| `JUPYTERHUB_PID_FILE`       | JupyterHub PID file.                         | `${JUPYTERHUB_TMP_DIR}/jupyterhub.pid`            |
+| `JUPYTERHUB_PROXY_PID_FILE` | JupyterHub proxy PID file.                   | `${JUPYTERHUB_TMP_DIR}/jupyterhub-proxy.pid`      |
+| `JUPYTERHUB_DAEMON_USER`    | JupyterHub daemon system user.               | `jupyterhub`                                      |
+| `JUPYTERHUB_DAEMON_GROUP`   | JupyterHub daemon system group.              | `jupyterhub`                                      |
 
 ### Running commands
 
@@ -66,23 +87,21 @@ To run commands inside this container you can use `docker run`, for example to e
 docker run --rm --name jupyterhub bitnami/jupyterhub:latest --version
 ```
 
-Check the [official Jupyter Hub documentation](https://jupyterhub.readthedocs.io/en/stable/reference/config-reference.html)i, or run the following to list of the available parameters.
+Check the [official Jupyter Hub documentation](https://jupyterhub.readthedocs.io/en/stable/reference/config-reference.html), or run the following to list the available parameters.
 
 ```console
 docker run --rm --name jupyterhub bitnami/jupyterhub:latest --help-all
 ```
 
-## Contributing
+### FIPS configuration in Bitnami Secure Images
 
-We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues) or submitting a [pull request](https://github.com/bitnami/containers/pulls) with your contribution.
+The Bitnami JupyterHub Docker image from the [Bitnami Secure Images](https://go-vmware.broadcom.com/contact-us) catalog includes extra features and settings to configure the container with FIPS capabilities. You can configure the next environment variables:
 
-## Issues
-
-If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/containers/issues/new/choose). For us to provide better support, be sure to fill the issue template.
+- `OPENSSL_FIPS`: whether OpenSSL runs in FIPS mode or not. `yes` (default), `no`.
 
 ## License
 
-Copyright &copy; 2023 VMware, Inc.
+Copyright &copy; 2026 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

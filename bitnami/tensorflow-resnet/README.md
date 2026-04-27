@@ -1,6 +1,4 @@
-# TensorFlow ResNet packaged by Bitnami
-
-## What is TensorFlow ResNet?
+# Bitnami Secure Image for TensorFlow ResNet
 
 > TensorFlow ResNet is a client utility for use with TensorFlow Serving and ResNet models.
 
@@ -18,58 +16,38 @@ curl -o resnet_50_classification_1.tar.gz https://storage.googleapis.com/tfhub-m
 tar xzf resnet_50_classification_1.tar.gz -C 1
 ```
 
-### Docker Compose
+## Why use Bitnami Secure Images?
 
-```console
-curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/tensorflow-resnet/docker-compose.yml > docker-compose.yml
-docker-compose up -d
-```
+Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami Secure Images are based on the cloud-optimized, security-hardened enterprise [OS Photon Linux](https://vmware.github.io/photon/). Why choose BSI images?
 
-## Why use Bitnami Images?
+- Hardened secure images of popular open source software with Near-Zero Vulnerabilities
+- Vulnerability Triage & Prioritization with VEX Statements, KEV and EPSS Scores
+- Compliance focus with FIPS, STIG, and air-gap options, including secure bill of materials (SBOM)
+- Software supply chain provenance attestation through in-toto
+- First class support for the internet’s favorite Helm charts
 
-* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With Bitnami images the latest bug fixes and features are available as soon as possible.
-* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
-* All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
-* All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
-* Bitnami container images are released on a regular basis with the latest distribution packages available.
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
 
-Looking to use TensorFlow ResNet in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
+
+If you are looking for our previous generation of images based on Debian Linux, please see the [Bitnami Legacy registry](https://hub.docker.com/u/bitnamilegacy).
 
 ## Why use a non-root container?
 
-Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://docs.bitnami.com/tutorials/work-with-non-root-containers/).
+Non-root container images add an extra layer of security and are generally recommended for production environments. However, because they run as a non-root user, privileged tasks are typically off-limits. Learn more about non-root containers [in our docs](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-work-with-non-root-containers-index.html).
 
 ## Supported tags and respective `Dockerfile` links
 
-Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
-
-You can see the equivalence between the different tags by taking a look at the `tags-info.yaml` file present in the branch folder, i.e `bitnami/ASSET/BRANCH/DISTRO/tags-info.yaml`.
-
-Subscribe to project updates by watching the [bitnami/containers GitHub repo](https://github.com/bitnami/containers).
-
-## Prerequisites
-
-To run this application you need Docker Engine 1.10.0. Docker Compose is recommended with a version 1.6.0 or later.
+Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html).
 
 ## How to use this image
 
 ### Run TensorFlow ResNet client with TensorFlow Serving
 
-Running TensorFlow ResNet client with the TensorFlow Serving server is the recommended way. You can either use docker-compose or run the containers manually.
-
-#### Run the application using Docker Compose
-
-The main folder of this repository contains a functional [`docker-compose.yml`](https://github.com/bitnami/containers/blob/main/bitnami/tensorflow-resnet/docker-compose.yml) file. Run the application using it as shown below:
-
-```console
-curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/tensorflow-resnet/docker-compose.yml > docker-compose.yml
-docker-compose up -d
-```
+Running TensorFlow ResNet client with the TensorFlow Serving server is the recommended way.
 
 #### Run the application manually
-
-If you want to run the application manually instead of using docker-compose, these are the basic steps you need to run:
 
 1. Create a new network for the application and the database:
 
@@ -103,8 +81,7 @@ Bitnami provides up-to-date versions of Tensorflow-Serving and TensorFlow ResNet
 
 2. Stop your container
 
-    * For docker-compose: `$ docker-compose stop tensorflow-resnet`
-    * For manual execution: `$ docker stop tensorflow-resnet`
+    - `$ docker stop tensorflow-resnet`
 
 3. Take a snapshot of the application state
 
@@ -118,15 +95,15 @@ You can use these snapshots to restore the application state should the upgrade 
 
 1. Remove the currently running container
 
-    * For docker-compose: `$ docker-compose rm tensorflow-resnet`
-    * For manual execution: `$ docker rm tensorflow-resnet`
+    - `$ docker rm tensorflow-resnet`
 
 2. Run the new image
 
-    * For docker-compose: `$ docker-compose up tensorflow-resnet`
-    * For manual execution (mount the directories if needed): `docker run --name tensorflow-resnet bitnami/tensorflow-resnet:latest`
+    - Mount the directories if needed: `docker run --name tensorflow-resnet bitnami/tensorflow-resnet:latest`
 
 ## Configuration
+
+The following section describes how to configure the application
 
 ### Predict an image
 
@@ -162,26 +139,34 @@ Once you have deployed both the TensorFlow Serving and TensorFlow ResNet contain
 
 Tensorflow Resnet can be customized by specifying environment variables on the first run. The following environment values are provided to custom Tensorflow:
 
-* `TF_RESNET_SERVING_PORT_NUMBER`: TensorFlow Serving Port. Default: **8500**
-* `TF_RESNET_SERVING_HOST`: TensorFlow Serving server name. Default: **tensorflow-serving**
+#### Customizable environment variables
+
+| Name                            | Description                    | Default Value        |
+|---------------------------------|--------------------------------|----------------------|
+| `TF_RESNET_SERVING_PORT_NUMBER` | Tensorflow serving port number | `8500`               |
+| `TF_RESNET_SERVING_HOST`        | Tensorflow serving host name   | `tensorflow-serving` |
+
+#### Read-only environment variables
+
+### FIPS configuration in Bitnami Secure Images
+
+The Bitnami TensorFlow ResNet Docker image from the [Bitnami Secure Images](https://go-vmware.broadcom.com/contact-us) catalog includes extra features and settings to configure the container with FIPS capabilities. You can configure the next environment variables:
+
+- `OPENSSL_FIPS`: whether OpenSSL runs in FIPS mode or not. `yes` (default), `no`.
 
 ## Notable Changes
 
+### Starting January 16, 2024
+
+- The `docker-compose.yaml` file has been removed, as it was solely intended for internal testing purposes.
+
 ### 2.4.1-debian-10-r87
 
-* The container initialization logic is now using bash.
-
-## Contributing
-
-We'd love for you to contribute to this Docker image. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues) or submitting a [pull request](https://github.com/bitnami/containers/pulls) with your contribution.
-
-## Issues
-
-If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/containers/issues/new/choose). For us to provide better support, be sure to fill the issue template.
+- The container initialization logic is now using bash.
 
 ## License
 
-Copyright &copy; 2023 VMware, Inc.
+Copyright &copy; 2026 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

@@ -1,10 +1,8 @@
-# ASP.NET packaged by Bitnami
-
-## What is ASP.NET?
+# Bitnami Secure Image for ASP.NET Core
 
 > ASP.NET Core is an open-source framework for web application development created by Microsoft. It runs on both the full .NET Framework, on Windows, and the cross-platform .NET Core.
 
-[Overview of ASP.NET](https://github.com/dotnet/aspnetcore)
+[Overview of ASP.NET Core](https://github.com/dotnet/aspnetcore)
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
@@ -13,53 +11,70 @@ Trademarks: This software listing is packaged by Bitnami. The respective tradema
 docker run --name aspnet-core bitnami/aspnet-core:latest
 ```
 
-### Docker Compose
+## Using `docker-compose.yml`
 
-```console
-curl -sSL https://raw.githubusercontent.com/bitnami/containers/main/bitnami/aspnet-core/docker-compose.yml > docker-compose.yml
-docker-compose up -d
-```
+The docker-compose.yaml file of this container can be found in the [Bitnami Containers repository](https://github.com/bitnami/containers/).
 
-## Why use Bitnami Images?
+[https://github.com/bitnami/containers/tree/main/bitnami/aspnet-core/docker-compose.yml](https://github.com/bitnami/containers/tree/main/bitnami/aspnet-core/docker-compose.yml)
 
-* Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
-* With Bitnami images the latest bug fixes and features are available as soon as possible.
-* Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
-* All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
-* All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
-* Bitnami container images are released on a regular basis with the latest distribution packages available.
+Please be aware this file has not undergone internal testing. Consequently, we advise its use exclusively for development or testing purposes. For production-ready deployments, we highly recommend utilizing its associated [Bitnami Helm chart](https://github.com/bitnami/charts/tree/main/bitnami/aspnet-core).
 
-Looking to use ASP.NET in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
+## Why use Bitnami Secure Images?
+
+Those are hardened, minimal CVE images built and maintained by Bitnami. Bitnami Secure Images are based on the cloud-optimized, security-hardened enterprise [OS Photon Linux](https://vmware.github.io/photon/). Why choose BSI images?
+
+- Hardened secure images of popular open source software with Near-Zero Vulnerabilities
+- Vulnerability Triage & Prioritization with VEX Statements, KEV and EPSS Scores
+- Compliance focus with FIPS, STIG, and air-gap options, including secure bill of materials (SBOM)
+- Software supply chain provenance attestation through in-toto
+- First class support for the internet’s favorite Helm charts
+
+Each image comes with valuable security metadata. You can view the metadata in [our public catalog here](https://app-catalog.vmware.com/bitnami/apps). Note: Some data is only available with [commercial subscriptions to BSI](https://bitnami.com/).
+
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%201.png?raw=true "Application details")
+![Alt text](https://github.com/bitnami/containers/blob/main/BSI%20UI%202.png?raw=true "Packaging report")
+
+If you are looking for our previous generation of images based on Debian Linux, please see the [Bitnami Legacy registry](https://hub.docker.com/u/bitnamilegacy).
+
+## Choosing between the _Standard_ and _Minimal_ image
+
+This asset is available in two flavors: _Standard_ and _Minimal_; designed to address different use cases and operational needs.
+
+### Standard images
+
+The standard images are full-featured, production-ready containers built on top of secure base operating systems. They include:
+
+- The complete runtime and commonly used system tools.
+- A familiar Linux environment (shell, package manager, debugging utilities).
+- Full compatibility with most CI/CD pipelines and existing workloads.
+
+Recommended for:
+
+- Development and testing environments.
+- Workloads requiring package installation or debugging tools.
+- Applications that depend on system utilities or shared libraries.
+
+### Minimal images
+
+The minimal images are optimized, distroless-style containers derived from a stripped-down base. They only ship what’s strictly necessary to run the application; no shell, package manager, or extra libraries. They provide:
+
+- Smaller size: Faster pull and startup times.
+- Reduced attack surface: Fewer components and potential vulnerabilities.
+- Simpler maintenance: Fewer dependencies to patch or update.
+
+Recommended for:
+
+- Production environments prioritizing performance and security.
+- Regulated or security-sensitive workloads
+- Containers built via multi-stage builds (e.g., Golang static binaries).
 
 ## Supported tags and respective `Dockerfile` links
 
-Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://docs.bitnami.com/tutorials/understand-rolling-tags-containers/).
-
-You can see the equivalence between the different tags by taking a look at the `tags-info.yaml` file present in the branch folder, i.e `bitnami/ASSET/BRANCH/DISTRO/tags-info.yaml`.
-
-Subscribe to project updates by watching the [bitnami/containers GitHub repo](https://github.com/bitnami/containers).
+Learn more about the Bitnami tagging policy and the difference between rolling tags and immutable tags [in our documentation page](https://techdocs.broadcom.com/us/en/vmware-tanzu/application-catalog/tanzu-application-catalog/services/tac-doc/apps-tutorials-understand-rolling-tags-containers-index.html).
 
 ## Get this image
 
-The recommended way to get the Bitnami aspnet-core Docker Image is to pull the prebuilt image from the [Docker Hub Registry](https://hub.docker.com/r/bitnami/aspnet-core).
-
-```console
-docker pull bitnami/aspnet-core:latest
-```
-
-To use a specific version, you can pull a versioned tag. You can view the [list of available versions](https://hub.docker.com/r/bitnami/aspnet-core/tags/) in the Docker Hub Registry.
-
-```console
-docker pull bitnami/aspnet-core:[TAG]
-```
-
-If you wish, you can also build the image yourself by cloning the repository, changing to the directory containing the Dockerfile and executing the `docker build` command. Remember to replace the `APP`, `VERSION` and `OPERATING-SYSTEM` path placeholders in the example command below with the correct values.
-
-```console
-git clone https://github.com/bitnami/containers.git
-cd bitnami/APP/VERSION/OPERATING-SYSTEM
-docker build -t bitnami/APP:latest .
-```
+The Bitnami ASP.NET Core Docker image is only available to [Bitnami Secure Images](https://bitnami.com) customers.
 
 ## Persisting your application
 
@@ -67,103 +82,29 @@ If you remove the container all your data will be lost, and the next time you ru
 
 For persistence you should mount a directory at the `/app` path. If the mounted directory is empty, it will be initialized on the first run.
 
-```console
-docker run \
-    -v /path/to/aspnet-core-persistence:/app \
-    bitnami/aspnet-core:latest
-```
-
-You can also do this with a minor change to the [`docker-compose.yml`](https://github.com/bitnami/containers/blob/main/bitnami/aspnet-core/docker-compose.yml) file present in this repository:
-
-```yaml
-aspnet-core:
-  ...
-  volumes:
-    - /path/to/aspnet-core-persistence:/app
-  ...
-```
-
 ## Connecting to other containers
 
 Using [Docker container networking](https://docs.docker.com/engine/userguide/networking/), a different server running inside a container can easily be accessed by your application containers and vice-versa.
 
 Containers attached to the same network can communicate with each other using the container name as the hostname.
 
-### Using the Command Line
+## Configuration
 
-#### Step 1: Create a network
+The following section describes how to configure the application
 
-```console
-docker network create aspnet-core-network --driver bridge
-```
+### FIPS configuration in Bitnami Secure Images
 
-#### Step 2: Launch the aspnet-core container within your network
+The Bitnami ASP.NET Core Docker image from the [Bitnami Secure Images](https://go-vmware.broadcom.com/contact-us) catalog includes extra features and settings to configure the container with FIPS capabilities. You can configure the next environment variables:
 
-Use the `--network <NETWORK>` argument to the `docker run` command to attach the container to the `aspnet-core-network` network.
-
-```console
-docker run --name aspnet-core-node1 --network aspnet-core-network bitnami/aspnet-core:latest
-```
-
-#### Step 3: Run another containers
-
-We can launch another containers using the same flag (`--network NETWORK`) in the `docker run` command. If you also set a name to your container, you will be able to use it as hostname in your network.
+- `OPENSSL_FIPS`: whether OpenSSL runs in FIPS mode or not. `yes` (default), `no`.
 
 ## Logging
 
-The Bitnami aspnet-core Docker image sends the container logs to `stdout`. To view the logs:
-
-```console
-docker logs aspnet-core
-```
-
-You can configure the containers [logging driver](https://docs.docker.com/engine/admin/logging/overview/) using the `--log-driver` option if you wish to consume the container logs differently. In the default configuration docker uses the `json-file` driver.
-
-## Maintenance
-
-### Upgrade this image
-
-Bitnami provides up-to-date versions of aspnet-core, including security patches, soon after they are made upstream. We recommend that you follow these steps to upgrade your container.
-
-#### Step 1: Get the updated image
-
-```console
-docker pull bitnami/aspnet-core:latest
-```
-
-#### Step 2: Stop the running container
-
-Stop the currently running container using the command
-
-```console
-docker stop aspnet-core
-```
-
-#### Step 3: Remove the currently running container
-
-```console
-docker rm -v aspnet-core
-```
-
-#### Step 4: Run the new image
-
-Re-create your container from the new image.
-
-```console
-docker run --name aspnet-core bitnami/aspnet-core:latest
-```
-
-## Contributing
-
-We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues) or submitting a [pull request](https://github.com/bitnami/containers/pulls) with your contribution.
-
-## Issues
-
-If you encountered a problem running this container, you can file an [issue](https://github.com/bitnami/containers/issues/new/choose). For us to provide better support, be sure to fill the issue template.
+The Bitnami ASP.NET Core Docker image sends the container logs to the `stdout`. You can configure the containers [logging driver](https://docs.docker.com/engine/admin/logging/overview/) using the `--log-driver` option if you wish to consume the container logs differently. In the default configuration docker uses the `json-file` driver.
 
 ## License
 
-Copyright &copy; 2023 VMware, Inc.
+Copyright &copy; 2026 Broadcom. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
